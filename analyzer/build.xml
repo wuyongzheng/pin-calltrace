@@ -4,7 +4,7 @@
     <mkdir dir="classes"/>
   </target>
   <target name="compile" depends="init">
-    <javac srcdir="src" destdir="classes" debug="true"/>
+    <javac srcdir="src" destdir="classes" debug="true" includeAntRuntime="false"/>
   </target>
   <target name="dist" depends="compile">
     <jar jarfile="tracetool.jar" basedir="classes">
