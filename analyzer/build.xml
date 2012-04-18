@@ -1,0 +1,21 @@
+<project name="tracetool" default="compile" basedir=".">
+  <target name="init">
+    <!--tstamp/-->
+    <mkdir dir="classes"/>
+  </target>
+  <target name="compile" depends="init">
+    <javac srcdir="src" destdir="classes" debug="true"/>
+  </target>
+  <target name="dist" depends="compile">
+    <jar jarfile="tracetool.jar" basedir="classes">
+      <manifest>
+        <attribute name="Built-By" value="${user.name}"/>
+        <attribute name="Main-Class" value="TraceTool"/>
+      </manifest>
+    </jar>
+  </target>
+  <target name="clean" description="clean up">
+    <delete dir="classes"/>
+    <delete file="tracetool.jar"/>
+  </target>
+</project>

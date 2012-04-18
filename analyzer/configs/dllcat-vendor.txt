@@ -1,0 +1,761 @@
+c:\documents and settings\rajiv\desktop\xfer\pin-2.6-27887-msvc9-ia32_intel64-windows\ia32\bin\zlib1.dll	zlib
+c:\progra~1\common~1\micros~1\smartt~1\1033\stintl.dll	microsoft
+c:\progra~1\common~1\micros~1\smartt~1\fname.dll	microsoft
+c:\program files\adobe\acrobat 8.0\acrobat\ace.dll	adobe
+c:\program files\adobe\acrobat 8.0\acrobat\acrobat.dll	adobe
+c:\program files\adobe\reader 9.0\reader\acrord32.dll	adobe
+c:\program files\adobe\reader 9.0\reader\acrord32.exe	adobe
+c:\program files\adobe\reader 9.0\reader\agm.dll	adobe
+c:\program files\adobe\reader 9.0\reader\cooltype.dll	adobe
+c:\program files\adobe\reader 9.0\reader\bib.dll	adobe
+c:\program files\adobe\reader 9.0\reader\ace.dll	adobe
+c:\program files\adobe\reader 9.0\reader\bibutils.dll	adobe
+c:\program files\adobe\reader 9.0\reader\acrord32.exe	adobe
+c:\program files\adobe\reader 9.0\reader\acrord32.dll	adobe
+c:\program files\adobe\reader 9.0\reader\plug_ins\annots.api	adobe
+c:\program files\adobe\reader 9.0\reader\sqlite.dll	sqlite
+c:\program files\adobe\reader 9.0\reader\plug_ins\updater.api	adobe
+c:\program files\adobe\reader 9.0\reader\plug_ins\escript.api	adobe
+c:\program files\adobe\reader 9.0\reader\adobeupdater.dll	adobe
+c:\program files\adobe\reader 9.0\reader\plug_ins\ppklite.api	adobe
+c:\program files\adobe\reader 9.0\reader\plug_ins\acroform.api	adobe
+c:\program files\adobe\reader 9.0\reader\plug_ins\digsig.api	adobe
+c:\program files\adobe\reader 9.0\reader\cryptocme2.dll	adobe
+c:\program files\adobe\reader 9.0\reader\ccme_base.dll	adobe
+c:\program files\adobe\reader 9.0\reader\axe8sharedexpat.dll	adobe
+c:\program files\adobe\reader 9.0\reader\axsle.dll	adobe
+c:\program files\adobe\reader 9.0\reader\icucnv36.dll	adobe
+c:\program files\adobe\reader 9.0\reader\icudt36.dll	adobe
+c:\program files\adobe\reader 9.0\reader\adobexmp.dll	adobe
+c:\program files\adobe\reader 9.0\reader\plug_ins\accessibility.api	adobe
+c:\program files\adobe\acrobat 8.0\acrobat\acrobatfnp.dll	macrovision
+c:\program files\adobe\acrobat 8.0\acrobat\adobe_epic.dll	adobe
+c:\program files\adobe\acrobat 8.0\acrobat\adobe_pcd.dll	adobe
+c:\program files\adobe\acrobat 8.0\acrobat\adobe_personalization.dll	adobe
+c:\program files\adobe\acrobat 8.0\acrobat\adobelinguistic.dll	adobe
+c:\program files\adobe\acrobat 8.0\acrobat\adobelm.dll	adobe
+c:\program files\adobe\acrobat 8.0\acrobat\adobeupdater.dll	adobe
+c:\program files\adobe\acrobat 8.0\acrobat\adobexmp.dll	adobe
+c:\program files\adobe\acrobat 8.0\acrobat\agm.dll	adobe
+c:\program files\adobe\acrobat 8.0\acrobat\asneu.dll	adobe
+c:\program files\adobe\acrobat 8.0\acrobat\axe8sharedexpat.dll	adobe
+c:\program files\adobe\acrobat 8.0\acrobat\axsle.dll	adobe
+c:\program files\adobe\acrobat 8.0\acrobat\bib.dll	adobe
+c:\program files\adobe\acrobat 8.0\acrobat\bibutils.dll	adobe
+c:\program files\adobe\acrobat 8.0\acrobat\ccme_base.dll	adobe
+c:\program files\adobe\acrobat 8.0\acrobat\cooltype.dll	adobe
+c:\program files\adobe\acrobat 8.0\acrobat\cryptocme2.dll	adobe
+c:\program files\adobe\acrobat 8.0\acrobat\fnp_act_installer.dll	macrovision
+c:\program files\adobe\acrobat 8.0\acrobat\icudt34.dll	adobe
+c:\program files\adobe\acrobat 8.0\acrobat\icudt34_full.dll	adobe
+c:\program files\adobe\acrobat 8.0\acrobat\icuuc34.dll	adobe
+c:\program files\adobe\acrobat 8.0\acrobat\libmysqld.dll	mysql
+c:\program files\adobe\acrobat 8.0\acrobat\plug_ins\accessibility.api	adobe
+c:\program files\adobe\acrobat 8.0\acrobat\plug_ins\acroform.api	adobe
+c:\program files\adobe\acrobat 8.0\acrobat\plug_ins\adbc.api	adobe
+c:\program files\adobe\acrobat 8.0\acrobat\plug_ins\annots.api	adobe
+c:\program files\adobe\acrobat 8.0\acrobat\plug_ins\catalog.api	adobe
+c:\program files\adobe\acrobat 8.0\acrobat\plug_ins\checkers.api	adobe
+c:\program files\adobe\acrobat 8.0\acrobat\plug_ins\digsig.api	adobe
+c:\program files\adobe\acrobat 8.0\acrobat\plug_ins\distillerpi.api	adobe
+c:\program files\adobe\acrobat 8.0\acrobat\plug_ins\dva.api	adobe
+c:\program files\adobe\acrobat 8.0\acrobat\plug_ins\ebook.api	adobe
+c:\program files\adobe\acrobat 8.0\acrobat\plug_ins\editor.api	adobe
+c:\program files\adobe\acrobat 8.0\acrobat\plug_ins\escript.api	adobe
+c:\program files\adobe\acrobat 8.0\acrobat\plug_ins\ewh32.api	adobe
+c:\program files\adobe\acrobat 8.0\acrobat\plug_ins\hls.api	adobe
+c:\program files\adobe\acrobat 8.0\acrobat\plug_ins\html2pdf.api	adobe
+c:\program files\adobe\acrobat 8.0\acrobat\plug_ins\ia32.api	adobe
+c:\program files\adobe\acrobat 8.0\acrobat\plug_ins\imageconversion.api	adobe
+c:\program files\adobe\acrobat 8.0\acrobat\plug_ins\imageviewer.api	adobe
+c:\program files\adobe\acrobat 8.0\acrobat\plug_ins\indesignpi.api	adobe
+c:\program files\adobe\acrobat 8.0\acrobat\plug_ins\jdfproddef.api	adobe
+c:\program files\adobe\acrobat 8.0\acrobat\plug_ins\makeaccessible.api	adobe
+c:\program files\adobe\acrobat 8.0\acrobat\plug_ins\multimedia.api	adobe
+c:\program files\adobe\acrobat 8.0\acrobat\plug_ins\papercapture.api	adobe
+c:\program files\adobe\acrobat 8.0\acrobat\plug_ins\pddom.api	adobe
+c:\program files\adobe\acrobat 8.0\acrobat\plug_ins\ppklite.api	adobe
+c:\program files\adobe\acrobat 8.0\acrobat\plug_ins\preflight.api	adobe
+c:\program files\adobe\acrobat 8.0\acrobat\plug_ins\readoutloud.api	adobe
+c:\program files\adobe\acrobat 8.0\acrobat\plug_ins\reflow.api	adobe
+c:\program files\adobe\acrobat 8.0\acrobat\plug_ins\saveasrtf.api	adobe
+c:\program files\adobe\acrobat 8.0\acrobat\plug_ins\saveasxml.api	adobe
+c:\program files\adobe\acrobat 8.0\acrobat\plug_ins\scan.api	adobe
+c:\program files\adobe\acrobat 8.0\acrobat\plug_ins\search.api	adobe
+c:\program files\adobe\acrobat 8.0\acrobat\plug_ins\search5.api	adobe
+c:\program files\adobe\acrobat 8.0\acrobat\plug_ins\sendmail.api	adobe
+c:\program files\adobe\acrobat 8.0\acrobat\plug_ins\spelling.api	adobe
+c:\program files\adobe\acrobat 8.0\acrobat\plug_ins\tablepicker.api	adobe
+c:\program files\adobe\acrobat 8.0\acrobat\plug_ins\touchup.api	adobe
+c:\program files\adobe\acrobat 8.0\acrobat\plug_ins\updater.api	adobe
+c:\program files\adobe\acrobat 8.0\acrobat\plug_ins\weblink.api	adobe
+c:\program files\adobe\acrobat 8.0\acrobat\plug_ins\webpdf.api	adobe
+c:\program files\adobe\acrobat 8.0\acrobat\plug_ins\xps2pdf.api	adobe
+c:\program files\adobe\acrobat 8.0\acrobat\spplugins\admplugin.apl	adobe
+c:\program files\adobe\acrobat 8.0\esl\asneu.dll	adobe
+c:\program files\bonjour\mdnsnsp.dll	apple
+c:\program files\common files\adobe\acrobat\activex\acroiehelper.dll	adobe
+c:\program files\common files\microsoft shared\ink\penusa.dll	microsoft
+c:\program files\common files\microsoft shared\ink\skchui.dll	microsoft
+c:\program files\common files\microsoft shared\office11\mso.dll	microsoft
+c:\program files\common files\microsoft shared\office11\riched20.dll	microsoft
+c:\program files\common files\microsoft shared\windows live\msidcrl40.dll	microsoft
+c:\program files\common files\microsoft shared\windows live\windowslivelogin.dll	microsoft
+c:\program files\gimp-2.0\bin\freetype6.dll	font
+c:\program files\gimp-2.0\bin\intl.dll	gtk
+c:\program files\gimp-2.0\bin\jpeg62.dll	image
+c:\program files\gimp-2.0\bin\libatk-1.0-0.dll	atk
+c:\program files\gimp-2.0\bin\libbabl-0.0-0.dll	image
+c:\program files\gimp-2.0\bin\libcairo-2.dll	image
+c:\program files\gimp-2.0\bin\libcroco-0.6-3.dll	css
+c:\program files\gimp-2.0\bin\libexpat-1.dll	xml
+c:\program files\gimp-2.0\bin\libfontconfig-1.dll	font
+c:\program files\gimp-2.0\bin\libgdk_pixbuf-2.0-0.dll	gtk
+c:\program files\gimp-2.0\bin\libgdk-win32-2.0-0.dll	gtk
+c:\program files\gimp-2.0\bin\libgegl-0.0-0.dll	gegl
+c:\program files\gimp-2.0\bin\libgimpbase-2.0-0.dll	gimp
+c:\program files\gimp-2.0\bin\libgimpcolor-2.0-0.dll	gimp
+c:\program files\gimp-2.0\bin\libgimpconfig-2.0-0.dll	gimp
+c:\program files\gimp-2.0\bin\libgimpmath-2.0-0.dll	gimp
+c:\program files\gimp-2.0\bin\libgimpmodule-2.0-0.dll	gimp
+c:\program files\gimp-2.0\bin\libgimpthumb-2.0-0.dll	gimp
+c:\program files\gimp-2.0\bin\libgimpwidgets-2.0-0.dll	gimp
+c:\program files\gimp-2.0\bin\libgio-2.0-0.dll	glib
+c:\program files\gimp-2.0\bin\libglib-2.0-0.dll	glib
+c:\program files\gimp-2.0\bin\libgmodule-2.0-0.dll	glib
+c:\program files\gimp-2.0\bin\libgobject-2.0-0.dll	glib
+c:\program files\gimp-2.0\bin\libgsf-1-114.dll	fileio
+c:\program files\gimp-2.0\bin\libgthread-2.0-0.dll	glib
+c:\program files\gimp-2.0\bin\libgtk-win32-2.0-0.dll	gtk
+c:\program files\gimp-2.0\bin\liblcms-1.dll	littlecms
+c:\program files\gimp-2.0\bin\libpango-1.0-0.dll	pango
+c:\program files\gimp-2.0\bin\libpangocairo-1.0-0.dll	pango
+c:\program files\gimp-2.0\bin\libpangoft2-1.0-0.dll	pango
+c:\program files\gimp-2.0\bin\libpangowin32-1.0-0.dll	pango
+c:\program files\gimp-2.0\bin\libpng12-0.dll	image
+c:\program files\gimp-2.0\bin\librsvg-2-2.dll	image
+c:\program files\gimp-2.0\bin\libxml2-2.dll	libxml
+c:\program files\gimp-2.0\bin\zlib1.dll	zlib
+c:\program files\gimp-2.0\lib\gegl-0.0\add.dll	gegl
+c:\program files\gimp-2.0\lib\gegl-0.0\affine.dll	gegl
+c:\program files\gimp-2.0\lib\gegl-0.0\bilateral-filter.dll	gegl
+c:\program files\gimp-2.0\lib\gegl-0.0\box-blur.dll	gegl
+c:\program files\gimp-2.0\lib\gegl-0.0\brightness-contrast.dll	gegl
+c:\program files\gimp-2.0\lib\gegl-0.0\buffer-sink.dll	gegl
+c:\program files\gimp-2.0\lib\gegl-0.0\buffer-source.dll	gegl
+c:\program files\gimp-2.0\lib\gegl-0.0\c2g.dll	gegl
+c:\program files\gimp-2.0\lib\gegl-0.0\checkerboard.dll	gegl
+c:\program files\gimp-2.0\lib\gegl-0.0\clear.dll	gegl
+c:\program files\gimp-2.0\lib\gegl-0.0\clone.dll	gegl
+c:\program files\gimp-2.0\lib\gegl-0.0\color.dll	gegl
+c:\program files\gimp-2.0\lib\gegl-0.0\color-burn.dll	gegl
+c:\program files\gimp-2.0\lib\gegl-0.0\color-dodge.dll	gegl
+c:\program files\gimp-2.0\lib\gegl-0.0\color-temperature.dll	gegl
+c:\program files\gimp-2.0\lib\gegl-0.0\contrast-curve.dll	gegl
+c:\program files\gimp-2.0\lib\gegl-0.0\convert-format.dll	gegl
+c:\program files\gimp-2.0\lib\gegl-0.0\crop.dll	gegl
+c:\program files\gimp-2.0\lib\gegl-0.0\darken.dll	gegl
+c:\program files\gimp-2.0\lib\gegl-0.0\difference.dll	gegl
+c:\program files\gimp-2.0\lib\gegl-0.0\difference-of-gaussians.dll	gegl
+c:\program files\gimp-2.0\lib\gegl-0.0\divide.dll	gegl
+c:\program files\gimp-2.0\lib\gegl-0.0\dropshadow.dll	gegl
+c:\program files\gimp-2.0\lib\gegl-0.0\dst.dll	gegl
+c:\program files\gimp-2.0\lib\gegl-0.0\dst-atop.dll	gegl
+c:\program files\gimp-2.0\lib\gegl-0.0\dst-in.dll	gegl
+c:\program files\gimp-2.0\lib\gegl-0.0\dst-out.dll	gegl
+c:\program files\gimp-2.0\lib\gegl-0.0\dst-over.dll	gegl
+c:\program files\gimp-2.0\lib\gegl-0.0\exclusion.dll	gegl
+c:\program files\gimp-2.0\lib\gegl-0.0\fractal-explorer.dll	gegl
+c:\program files\gimp-2.0\lib\gegl-0.0\gamma.dll	gegl
+c:\program files\gimp-2.0\lib\gegl-0.0\gaussian-blur.dll	gegl
+c:\program files\gimp-2.0\lib\gegl-0.0\grey.dll	gegl
+c:\program files\gimp-2.0\lib\gegl-0.0\hard-light.dll	gegl
+c:\program files\gimp-2.0\lib\gegl-0.0\introspect.dll	gegl
+c:\program files\gimp-2.0\lib\gegl-0.0\invert.dll	gegl
+c:\program files\gimp-2.0\lib\gegl-0.0\jpg-load.dll	gegl
+c:\program files\gimp-2.0\lib\gegl-0.0\layer.dll	gegl
+c:\program files\gimp-2.0\lib\gegl-0.0\levels.dll	gegl
+c:\program files\gimp-2.0\lib\gegl-0.0\lighten.dll	gegl
+c:\program files\gimp-2.0\lib\gegl-0.0\load.dll	gegl
+c:\program files\gimp-2.0\lib\gegl-0.0\magick-load.dll	gegl
+c:\program files\gimp-2.0\lib\gegl-0.0\mblur.dll	gegl
+c:\program files\gimp-2.0\lib\gegl-0.0\mono-mixer.dll	gegl
+c:\program files\gimp-2.0\lib\gegl-0.0\multiply.dll	gegl
+c:\program files\gimp-2.0\lib\gegl-0.0\noise.dll	gegl
+c:\program files\gimp-2.0\lib\gegl-0.0\nop.dll	gegl
+c:\program files\gimp-2.0\lib\gegl-0.0\normal.dll	gegl
+c:\program files\gimp-2.0\lib\gegl-0.0\opacity.dll	gegl
+c:\program files\gimp-2.0\lib\gegl-0.0\open-buffer.dll	gegl
+c:\program files\gimp-2.0\lib\gegl-0.0\over.dll	gegl
+c:\program files\gimp-2.0\lib\gegl-0.0\overlay.dll	gegl
+c:\program files\gimp-2.0\lib\gegl-0.0\path.dll	gegl
+c:\program files\gimp-2.0\lib\gegl-0.0\pixbuf.dll	gegl
+c:\program files\gimp-2.0\lib\gegl-0.0\plus.dll	gegl
+c:\program files\gimp-2.0\lib\gegl-0.0\png-load.dll	gegl
+c:\program files\gimp-2.0\lib\gegl-0.0\png-save.dll	gegl
+c:\program files\gimp-2.0\lib\gegl-0.0\ppm-load.dll	gegl
+c:\program files\gimp-2.0\lib\gegl-0.0\ppm-save.dll	gegl
+c:\program files\gimp-2.0\lib\gegl-0.0\raw-load.dll	gegl
+c:\program files\gimp-2.0\lib\gegl-0.0\rectangle.dll	gegl
+c:\program files\gimp-2.0\lib\gegl-0.0\remap.dll	gegl
+c:\program files\gimp-2.0\lib\gegl-0.0\save-pixbuf.dll	gegl
+c:\program files\gimp-2.0\lib\gegl-0.0\screen.dll	gegl
+c:\program files\gimp-2.0\lib\gegl-0.0\snn-mean.dll	gegl
+c:\program files\gimp-2.0\lib\gegl-0.0\soft-light.dll	gegl
+c:\program files\gimp-2.0\lib\gegl-0.0\src.dll	gegl
+c:\program files\gimp-2.0\lib\gegl-0.0\src-atop.dll	gegl
+c:\program files\gimp-2.0\lib\gegl-0.0\src-in.dll	gegl
+c:\program files\gimp-2.0\lib\gegl-0.0\src-out.dll	gegl
+c:\program files\gimp-2.0\lib\gegl-0.0\src-over.dll	gegl
+c:\program files\gimp-2.0\lib\gegl-0.0\stress.dll	gegl
+c:\program files\gimp-2.0\lib\gegl-0.0\stretch-contrast.dll	gegl
+c:\program files\gimp-2.0\lib\gegl-0.0\subtract.dll	gegl
+c:\program files\gimp-2.0\lib\gegl-0.0\svg-huerotate.dll	gegl
+c:\program files\gimp-2.0\lib\gegl-0.0\svg-load.dll	gegl
+c:\program files\gimp-2.0\lib\gegl-0.0\svg-luminancetoalpha.dll	gegl
+c:\program files\gimp-2.0\lib\gegl-0.0\svg-matrix.dll	gegl
+c:\program files\gimp-2.0\lib\gegl-0.0\svg-multiply.dll	gegl
+c:\program files\gimp-2.0\lib\gegl-0.0\svg-saturate.dll	gegl
+c:\program files\gimp-2.0\lib\gegl-0.0\text.dll	gegl
+c:\program files\gimp-2.0\lib\gegl-0.0\threshold.dll	gegl
+c:\program files\gimp-2.0\lib\gegl-0.0\tonemap.dll	gegl
+c:\program files\gimp-2.0\lib\gegl-0.0\unsharp-mask.dll	gegl
+c:\program files\gimp-2.0\lib\gegl-0.0\value-invert.dll	gegl
+c:\program files\gimp-2.0\lib\gegl-0.0\weighted_blend.dll	gegl
+c:\program files\gimp-2.0\lib\gegl-0.0\whitebalance.dll	gegl
+c:\program files\gimp-2.0\lib\gegl-0.0\write-buffer.dll	gegl
+c:\program files\gimp-2.0\lib\gegl-0.0\xor.dll	gegl
+c:\program files\gimp-2.0\lib\gimp\2.0\modules\libcolor-selector-cmyk.dll	gimp
+c:\program files\gimp-2.0\lib\gimp\2.0\modules\libcolor-selector-water.dll	gimp
+c:\program files\gimp-2.0\lib\gimp\2.0\modules\libcolor-selector-wheel.dll	gimp
+c:\program files\gimp-2.0\lib\gimp\2.0\modules\libcontroller-dx-dinput.dll	gimp
+c:\program files\gimp-2.0\lib\gimp\2.0\modules\libdisplay-filter-color-blind.dll	gimp
+c:\program files\gimp-2.0\lib\gimp\2.0\modules\libdisplay-filter-gamma.dll	gimp
+c:\program files\gimp-2.0\lib\gimp\2.0\modules\libdisplay-filter-high-contrast.dll	gimp
+c:\program files\gimp-2.0\lib\gimp\2.0\modules\libdisplay-filter-lcms.dll	gimp
+c:\program files\gimp-2.0\lib\gimp\2.0\modules\libdisplay-filter-proof.dll	gimp
+c:\program files\gimp-2.0\lib\gtk-2.0\2.10.0\engines\libwimp.dll	gtk
+c:\program files\gimp-2.0\lib\gtk-2.0\2.10.0\loaders\libpixbufloader-png.dll	gtk
+c:\program files\internet explorer\iexplore.exe	microsoft
+c:\program files\internet explorer\sqmapi.dll	microsoft
+c:\program files\java\jre6\bin\jp2ssv.dll	java
+c:\program files\java\jre6\bin\msvcr71.dll	microsoft
+c:\program files\java\jre6\lib\deploy\jqs\ie\jqs_plugin.dll	java
+c:\progra~1\jetbra~1\intell~1.3\jre\jre\bin\client\jvm.dll	java
+c:\progra~1\jetbra~1\intell~1.3\jre\jre\bin\hpi.dll	java
+c:\progra~1\jetbra~1\intell~1.3\jre\jre\bin\java.dll	java
+c:\progra~1\jetbra~1\intell~1.3\jre\jre\bin\verify.dll	java
+c:\progra~1\jetbra~1\intell~1.3\jre\jre\bin\zip.dll	java
+c:\program files\jetbrains\intellij idea 8.1.3\bin\focuskiller.dll	intellij
+c:\program files\jetbrains\intellij idea 8.1.3\bin\idea.exe	intellij
+c:\program files\jetbrains\intellij idea 8.1.3\bin\msvcr71.dll	microsoft
+c:\program files\jetbrains\intellij idea 8.1.3\jre\jre\bin\awt.dll	java
+c:\program files\jetbrains\intellij idea 8.1.3\jre\jre\bin\dcpr.dll	java
+c:\program files\jetbrains\intellij idea 8.1.3\jre\jre\bin\fontmanager.dll	java
+c:\program files\jetbrains\intellij idea 8.1.3\jre\jre\bin\jawt.dll	java
+c:\program files\jetbrains\intellij idea 8.1.3\jre\jre\bin\management.dll	java
+c:\program files\jetbrains\intellij idea 8.1.3\jre\jre\bin\net.dll	java
+c:\program files\jetbrains\intellij idea 8.1.3\jre\jre\bin\nio.dll	java
+c:\program files\microsoft sync framework\v1.0\runtime\x86\filesyncprovider.dll	microsoft
+c:\program files\microsoft sync framework\v1.0\runtime\x86\metastore.dll	microsoft
+c:\program files\microsoft sync framework\v1.0\runtime\x86\msfdb.dll	microsoft
+c:\program files\microsoft sync framework\v1.0\runtime\x86\msfdbqp.dll	microsoft
+c:\program files\microsoft sync framework\v1.0\runtime\x86\msfdbse.dll	microsoft
+c:\program files\microsoft sync framework\v1.0\runtime\x86\resources\1033\filesyncprovider.rll	microsoft
+c:\program files\microsoft sync framework\v1.0\runtime\x86\resources\1033\metastore.rll	microsoft
+c:\program files\microsoft sync framework\v1.0\runtime\x86\synchronization.dll	microsoft
+c:\program files\mozilla firefox\components\browserdirprovider.dll	firefox
+c:\program files\mozilla firefox\components\brwsrcmp.dll	firefox
+c:\program files\mozilla firefox\firefox.exe	firefox
+c:\program files\mozilla firefox\freebl3.dll	firefox
+c:\program files\mozilla firefox\js3250.dll	firefox
+c:\program files\mozilla firefox\mozcrt19.dll	firefox
+c:\program files\mozilla firefox\nspr4.dll	firefox
+c:\program files\mozilla firefox\nss3.dll	firefox
+c:\program files\mozilla firefox\nssckbi.dll	firefox
+c:\program files\mozilla firefox\nssdbm3.dll	firefox
+c:\program files\mozilla firefox\nssutil3.dll	firefox
+c:\program files\mozilla firefox\plc4.dll	firefox
+c:\program files\mozilla firefox\plds4.dll	firefox
+c:\program files\mozilla firefox\smime3.dll	firefox
+c:\program files\mozilla firefox\softokn3.dll	firefox
+c:\program files\mozilla firefox\sqlite3.dll	sqlite
+c:\program files\mozilla firefox\ssl3.dll	firefox
+c:\program files\mozilla firefox\xpcom.dll	firefox
+c:\program files\mozilla firefox\xul.dll	firefox
+c:\program files\synctoy 2.0\sqmapi.dll	microsoft
+c:\program files\synctoy 2.0\sqmmanagedwrapper.dll	microsoft
+c:\program files\synctoy 2.0\synctoy.exe	microsoft
+c:\program files\synctoy 2.0\synctoyengine.dll	microsoft
+c:\program files\openoffice.org 2.4\program\avmedia680mi.dll	openoffice
+c:\program files\openoffice.org 2.4\program\basegfx680mi.dll	openoffice
+c:\program files\openoffice.org 2.4\program\behelper.uno.dll	openoffice
+c:\program files\openoffice.org 2.4\program\bootstrap.uno.dll	openoffice
+c:\program files\openoffice.org 2.4\program\comphelp4msc.dll	openoffice
+c:\program files\openoffice.org 2.4\program\configmgr2.uno.dll	openoffice
+c:\program files\openoffice.org 2.4\program\cppu3.dll	openoffice
+c:\program files\openoffice.org 2.4\program\cppuhelper3msc.dll	openoffice
+c:\program files\openoffice.org 2.4\program\deployment680mi.uno.dll	openoffice
+c:\program files\openoffice.org 2.4\program\deploymentmisc680mi.dll	openoffice
+c:\program files\openoffice.org 2.4\program\dnd.dll	openoffice
+c:\program files\openoffice.org 2.4\program\emser680mi.dll	openoffice
+c:\program files\openoffice.org 2.4\program\fileacc.dll	openoffice
+c:\program files\openoffice.org 2.4\program\filterconfig1.dll	openoffice
+c:\program files\openoffice.org 2.4\program\fsstorage.uno.dll	openoffice
+c:\program files\openoffice.org 2.4\program\ftransl.dll	openoffice
+c:\program files\openoffice.org 2.4\program\fwe680mi.dll	openoffice
+c:\program files\openoffice.org 2.4\program\fwi680mi.dll	openoffice
+c:\program files\openoffice.org 2.4\program\fwk680mi.dll	openoffice
+c:\program files\openoffice.org 2.4\program\fwl680mi.dll	openoffice
+c:\program files\openoffice.org 2.4\program\fwm680mi.dll	openoffice
+c:\program files\openoffice.org 2.4\program\go680mi.dll	openoffice
+c:\program files\openoffice.org 2.4\program\guesslang680mi.dll	openoffice
+c:\program files\openoffice.org 2.4\program\helplinker680mi.dll	openoffice
+c:\program files\openoffice.org 2.4\program\i18nisolang1msc.dll	openoffice
+c:\program files\openoffice.org 2.4\program\i18npool.uno.dll	openoffice
+c:\program files\openoffice.org 2.4\program\i18nutilmsc.dll	openoffice
+c:\program files\openoffice.org 2.4\program\icudt36l.dll	openoffice
+c:\program files\openoffice.org 2.4\program\icuin36.dll	openoffice
+c:\program files\openoffice.org 2.4\program\icuuc36.dll	openoffice
+c:\program files\openoffice.org 2.4\program\j680mi_g.dll	openoffice
+c:\program files\openoffice.org 2.4\program\jvmaccess3msc.dll	openoffice
+c:\program files\openoffice.org 2.4\program\jvmfwk3.dll	openoffice
+c:\program files\openoffice.org 2.4\program\ldapbe2.uno.dll	openoffice
+c:\program files\openoffice.org 2.4\program\libcurl.dll	libcurl
+c:\program files\openoffice.org 2.4\program\libdb42.dll	berkeleydb
+c:\program files\openoffice.org 2.4\program\libtextcat.dll	libtextcat
+c:\program files\openoffice.org 2.4\program\libxml2.dll	libxml
+c:\program files\openoffice.org 2.4\program\libxslt.dll	libxml
+c:\program files\openoffice.org 2.4\program\lng680mi.dll	openoffice
+c:\program files\openoffice.org 2.4\program\localebe1.uno.dll	openoffice
+c:\program files\openoffice.org 2.4\program\localedata_en.dll	openoffice
+c:\program files\openoffice.org 2.4\program\mcnttype.dll	openoffice
+c:\program files\openoffice.org 2.4\program\msci_uno.dll	openoffice
+c:\program files\openoffice.org 2.4\program\msvcp71.dll	microsoft
+c:\program files\openoffice.org 2.4\program\msvcr71.dll	microsoft
+c:\program files\openoffice.org 2.4\program\nsldap32v50.dll	openoffice
+c:\program files\openoffice.org 2.4\program\oleautobridge.uno.dll	openoffice
+c:\program files\openoffice.org 2.4\program\package2.dll	openoffice
+c:\program files\openoffice.org 2.4\program\purpenvhelper3msc.dll	openoffice
+c:\program files\openoffice.org 2.4\program\reflection.uno.dll	openoffice
+c:\program files\openoffice.org 2.4\program\reg3.dll	openoffice
+c:\program files\openoffice.org 2.4\program\sal3.dll	openoffice
+c:\program files\openoffice.org 2.4\program\salhelper3msc.dll	openoffice
+c:\program files\openoffice.org 2.4\program\sax.uno.dll	openoffice
+c:\program files\openoffice.org 2.4\program\sb680mi.dll	openoffice
+c:\program files\openoffice.org 2.4\program\sfx680mi.dll	openoffice
+c:\program files\openoffice.org 2.4\program\soffice.bin	openoffice
+c:\program files\openoffice.org 2.4\program\soffice.exe	openoffice
+c:\program files\openoffice.org 2.4\program\sot680mi.dll	openoffice
+c:\program files\openoffice.org 2.4\program\spl680mi.dll	openoffice
+c:\program files\openoffice.org 2.4\program\stclient_wrapper.exe	openoffice
+c:\program files\openoffice.org 2.4\program\stlport_vc7145.dll	openoffice
+c:\program files\openoffice.org 2.4\program\stocservices.uno.dll	openoffice
+c:\program files\openoffice.org 2.4\program\store3.dll	openoffice
+c:\program files\openoffice.org 2.4\program\svl680mi.dll	openoffice
+c:\program files\openoffice.org 2.4\program\svt680mi.dll	openoffice
+c:\program files\openoffice.org 2.4\program\svx680mi.dll	openoffice
+c:\program files\openoffice.org 2.4\program\sw680mi.dll	openoffice
+c:\program files\openoffice.org 2.4\program\swriter.exe	openoffice
+c:\program files\openoffice.org 2.4\program\sysdtrans.dll	openoffice
+c:\program files\openoffice.org 2.4\program\sysmgr1.uno.dll	openoffice
+c:\program files\openoffice.org 2.4\program\tk680mi.dll	openoffice
+c:\program files\openoffice.org 2.4\program\tl680mi.dll	openoffice
+c:\program files\openoffice.org 2.4\program\ucb1.dll	openoffice
+c:\program files\openoffice.org 2.4\program\ucbhelper4msc.dll	openoffice
+c:\program files\openoffice.org 2.4\program\ucpexpand1.uno.dll	openoffice
+c:\program files\openoffice.org 2.4\program\ucpfile1.dll	openoffice
+c:\program files\openoffice.org 2.4\program\unoxml680mi.dll	openoffice
+c:\program files\openoffice.org 2.4\program\unsafe_uno_uno.dll	openoffice
+c:\program files\openoffice.org 2.4\program\updatefeed.uno.dll	openoffice
+c:\program files\openoffice.org 2.4\program\updchk.uno.dll	openoffice
+c:\program files\openoffice.org 2.4\program\utl680mi.dll	openoffice
+c:\program files\openoffice.org 2.4\program\uui680mi.dll	openoffice
+c:\program files\openoffice.org 2.4\program\uwinapi.dll	openoffice
+c:\program files\openoffice.org 2.4\program\vcl680mi.dll	openoffice
+c:\program files\openoffice.org 2.4\program\vos3msc.dll	openoffice
+c:\program files\openoffice.org 2.4\program\xcr680mi.dll	openoffice
+c:\program files\openoffice.org 2.4\program\xo680mi.dll	openoffice
+c:\program files\openoffice.org 2.4\program\xstor.dll	openoffice
+c:\program files\tortoisesvn\bin\intl3_svn.dll	svn
+c:\program files\tortoisesvn\bin\libapr_tsvn.dll	svn
+c:\program files\tortoisesvn\bin\libapriconv_tsvn.dll	svn
+c:\program files\tortoisesvn\bin\libaprutil_tsvn.dll	svn
+c:\program files\tortoisesvn\bin\tortoisesvn.dll	svn
+c:\program files\tortoisesvn\iconv\_tbl_simple.so	svn
+c:\program files\tortoisesvn\iconv\utf-8.so	svn
+c:\program files\tortoisesvn\iconv\windows-1252.so	svn
+c:\program files\ultramon\rtsultramonhook.dll	remove
+c:\windows\assembly\gac_msil\microsoft.synchronization.files\1.0.0.0__89845dcd8080cc91\microsoft.synchronization.files.dll	microsoft
+c:\windows\assembly\gac_msil\microsoft.synchronization.metadatastorage\1.0.0.0__89845dcd8080cc91\microsoft.synchronization.metadatastorage.dll	microsoft
+c:\windows\assembly\gac_msil\microsoft.synchronization\1.0.0.0__89845dcd8080cc91\microsoft.synchronization.dll	microsoft
+c:\windows\assembly\nativeimages_v2.0.50727_32\mscorlib\c068708e16abf0be77a21b9f29817d83\mscorlib.ni.dll	microsoft
+c:\windows\assembly\nativeimages_v2.0.50727_32\system.configuration\982c005f97eacba888acdda322c49362\system.configuration.ni.dll	microsoft
+c:\windows\assembly\nativeimages_v2.0.50727_32\system.drawing\19d027c3381110e60c003f2c8bd307ee\system.drawing.ni.dll	microsoft
+c:\windows\assembly\nativeimages_v2.0.50727_32\system.windows.forms\6d75eb3ca10a514754f5e87cc2134f07\system.windows.forms.ni.dll	microsoft
+c:\windows\assembly\nativeimages_v2.0.50727_32\system.xml\38b9d09539b67b08ee996db6c71f8a9b\system.xml.ni.dll	microsoft
+c:\windows\assembly\nativeimages_v2.0.50727_32\system\57ac9ba5419d6bf4b79f2979b0755428\system.ni.dll	microsoft
+c:\windows\assembly\nativeimages_v2.0.50727_32\mscorlib\6d667f19d687361886990f3ca0f49816\mscorlib.ni.dll	microsoft
+c:\windows\assembly\nativeimages_v2.0.50727_32\system.configuration\982c005f97eacba888acdda322c49362\system.configuration.ni.dll	microsoft
+c:\windows\assembly\nativeimages_v2.0.50727_32\system.configuration\b82c00e2d24305ad6cb08556e3779b75\system.configuration.ni.dll	microsoft
+c:\windows\assembly\nativeimages_v2.0.50727_32\system.drawing\3da96ee075bab9202626ae44c18d226c\system.drawing.ni.dll	microsoft
+c:\windows\assembly\nativeimages_v2.0.50727_32\system.windows.forms\63406259e94d5c0ff5b79401dfe113ce\system.windows.forms.ni.dll	microsoft
+c:\windows\assembly\nativeimages_v2.0.50727_32\system.xml\773a9786013451d3baaeff003dc4230f\system.xml.ni.dll	microsoft
+c:\windows\assembly\nativeimages_v2.0.50727_32\system\80978a322d7dd39f0a71be1251ae395a\system.ni.dll	microsoft
+c:\windows\microsoft.net\framework\v2.0.50727\culture.dll	microsoft
+c:\windows\microsoft.net\framework\v2.0.50727\mscorjit.dll	microsoft
+c:\windows\microsoft.net\framework\v2.0.50727\mscorsec.dll	microsoft
+c:\windows\microsoft.net\framework\v2.0.50727\mscorwks.dll	microsoft
+c:\windows\system32\activeds.dll	microsoft
+c:\windows\system32\adsldpc.dll	microsoft
+c:\windows\apppatch\acgenral.dll	microsoft
+c:\windows\apppatch\aclayers.dll	microsoft
+c:\windows\apppatch\acredir.dll	adobe
+c:\windows\apppatch\acspecfc.dll	microsoft
+c:\windows\apppatch\iebrshim.dll	microsoft
+c:\windows\system32\actxprxy.dll	remove
+c:\windows\system32\advapi32.dll	microsoft
+c:\windows\system32\apphelp.dll	microsoft
+c:\windows\system32\atl.dll	microsoft
+c:\windows\system32\atmlib.dll	microsoft
+c:\windows\system32\audioeng.dll	microsoft
+c:\windows\system32\audioses.dll	microsoft
+c:\windows\system32\avgrsstx.dll	microsoft
+c:\windows\system32\avifil32.dll	microsoft
+c:\windows\system32\avrt.dll	microsoft
+c:\windows\system32\bcrypt.dll	microsoft
+c:\windows\system32\browselc.dll	microsoft
+c:\windows\system32\browseui.dll	microsoft
+c:\windows\system32\cabinet.dll	microsoft
+c:\windows\system32\clbcatq.dll	microsoft
+c:\windows\system32\comctl32.dll	microsoft
+c:\windows\system32\comdlg32.dll	microsoft
+c:\windows\system32\comres.dll	microsoft
+c:\windows\system32\credssp.dll	microsoft
+c:\windows\system32\credui.dll	microsoft
+c:\windows\system32\crypt32.dll	microsoft
+c:\windows\system32\cryptnet.dll	microsoft
+c:\windows\system32\cryptui.dll	microsoft
+c:\windows\system32\cscapi.dll	microsoft
+c:\windows\system32\cscdll.dll	microsoft
+c:\windows\system32\cscui.dll	microsoft
+c:\windows\system32\d3dim700.dll	microsoft
+c:\windows\system32\dbghelp.dll	microsoft
+c:\windows\system32\dciman32.dll	microsoft
+c:\windows\system32\ddraw.dll	microsoft
+c:\windows\system32\ddrawex.dll	microsoft
+c:\windows\system32\devenum.dll	microsoft
+c:\windows\system32\dhcpcsvc.dll	microsoft
+c:\windows\system32\dhcpcsvc6.dll	microsoft
+c:\windows\system32\dnsapi.dll	microsoft
+c:\windows\system32\dot3api.dll	microsoft
+c:\windows\system32\dot3dlg.dll	microsoft
+c:\windows\system32\dsound.dll	microsoft
+c:\windows\system32\dwmapi.dll	microsoft
+c:\windows\system32\dxtmsft.dll	microsoft
+c:\windows\system32\dxtrans.dll	microsoft
+c:\windows\system32\eapolqec.dll	microsoft
+c:\windows\system32\eappcfg.dll	microsoft
+c:\windows\system32\eappprxy.dll	microsoft
+c:\windows\system32\esent.dll	microsoft
+c:\windows\system32\faultrep.dll	microsoft
+c:\windows\system32\gdi32.dll	microsoft
+c:\windows\system32\gpapi.dll	microsoft
+c:\windows\system32\hnetcfg.dll	microsoft
+c:\windows\system32\iac25_32.ax	intel
+c:\windows\system32\icm32.dll	microsoft
+c:\windows\system32\ieframe.dll	microsoft
+c:\windows\system32\iepeers.dll	microsoft
+c:\windows\system32\iertutil.dll	microsoft
+c:\windows\system32\imaadp32.acm	fraunhofer
+c:\windows\system32\imagehlp.dll	microsoft
+c:\windows\system32\imgutil.dll	microsoft
+c:\windows\system32\imm32.dll	microsoft
+c:\windows\system32\iphlpapi.dll	microsoft
+c:\windows\system32\jscript.dll	microsoft
+c:\windows\system32\kernel32.dll	microsoft
+c:\windows\system32\ksuser.dll	microsoft
+c:\windows\system32\l3codeca.acm	microsoft
+c:\windows\system32\lpk.dll	microsoft
+c:\windows\system32\mfc42.dll	microsoft
+c:\windows\system32\midimap.dll	microsoft
+c:\windows\system32\mlang.dll	microsoft
+c:\windows\system32\mmdevapi.dll	microsoft
+c:\windows\system32\mpr.dll	microsoft
+c:\windows\system32\mprapi.dll	microsoft
+c:\windows\system32\msacm32.dll	microsoft
+c:\windows\system32\msacm32.drv	microsoft
+c:\windows\system32\msadp32.acm	microsoft
+c:\windows\system32\msasn1.dll	microsoft
+c:\windows\system32\msaud32.acm	microsoft
+c:\windows\system32\mscms.dll	microsoft
+c:\windows\system32\mscoree.dll	microsoft
+c:\windows\system32\msctf.dll	microsoft
+c:\windows\system32\msctfime.ime	microsoft
+c:\windows\system32\msdmo.dll	microsoft
+c:\windows\system32\msg711.acm	microsoft
+c:\windows\system32\msg723.acm	microsoft
+c:\windows\system32\msgsm32.acm	microsoft
+c:\windows\system32\msh263.drv	microsoft
+c:\windows\system32\mshtml.dll	microsoft
+c:\windows\system32\mshtmled.dll	microsoft
+c:\windows\system32\msi.dll	microsoft
+c:\windows\system32\msiltcfg.dll	microsoft
+c:\windows\system32\msimg32.dll	microsoft
+c:\windows\system32\msimtf.dll	microsoft
+c:\windows\system32\msisip.dll	microsoft
+c:\windows\system32\msls31.dll	microsoft
+c:\windows\system32\msrle32.dll	microsoft
+c:\windows\system32\msvcp60.dll	microsoft
+c:\windows\system32\msvcrt.dll	microsoft
+c:\windows\system32\msvfw32.dll	microsoft
+c:\windows\system32\mswsock.dll	microsoft
+c:\windows\system32\msxml3.dll	microsoft
+c:\windows\system32\napinsp.dll	microsoft
+c:\windows\system32\ncrypt.dll	microsoft
+c:\windows\system32\netman.dll	microsoft
+c:\windows\system32\netapi32.dll	microsoft
+c:\windows\system32\netshell.dll	microsoft
+c:\windows\system32\nlaapi.dll	microsoft
+c:\windows\system32\normaliz.dll	microsoft
+c:\windows\system32\nsi.dll	microsoft
+c:\windows\system32\ntdll.dll	microsoft
+c:\windows\system32\ntmarta.dll	microsoft
+c:\windows\system32\ole32.dll	microsoft
+c:\windows\system32\oleacc.dll	microsoft
+c:\windows\system32\oleaut32.dll	microsoft
+c:\windows\system32\oledlg.dll	microsoft
+c:\windows\system32\onex.dll	microsoft
+c:\windows\system32\pngfilt.dll	microsoft
+c:\windows\system32\pnrpnsp.dll	microsoft
+c:\windows\system32\propsys.dll	microsoft
+c:\windows\system32\psapi.dll	microsoft
+c:\windows\system32\quartz.dll	microsoft
+c:\windows\system32\qutil.dll	microsoft
+c:\windows\system32\rasadhlp.dll	microsoft
+c:\windows\system32\rasapi32.dll	microsoft
+c:\windows\system32\rasman.dll	microsoft
+c:\windows\system32\rdpsnd.dll	microsoft
+c:\windows\system32\riched20.dll	microsoft
+c:\windows\system32\rpcrt4.dll	microsoft
+c:\windows\system32\rsaenh.dll	microsoft
+c:\windows\system32\rtutils.dll	microsoft
+c:\windows\system32\samlib.dll	microsoft
+c:\windows\system32\schannel.dll	microsoft
+c:\windows\system32\scrobj.dll	microsoft
+c:\windows\system32\secur32.dll	microsoft
+c:\windows\system32\sensapi.dll	microsoft
+c:\windows\system32\setupapi.dll	microsoft
+c:\windows\system32\sfc.dll	microsoft
+c:\windows\system32\sfc_os.dll	microsoft
+c:\windows\system32\shdoclc.dll	microsoft
+c:\windows\system32\shdocvw.dll	microsoft
+c:\windows\system32\shell32.dll	microsoft
+c:\windows\system32\shfolder.dll	microsoft
+c:\windows\system32\shimeng.dll	microsoft
+c:\windows\system32\shlwapi.dll	microsoft
+c:\windows\system32\sirenacm.dll	microsoft
+c:\windows\system32\slc.dll	microsoft
+c:\windows\system32\sl_anet.acm	microsoft
+c:\windows\system32\snmpapi.dll	microsoft
+c:\windows\system32\sxs.dll	microsoft
+c:\windows\system32\t2embed.dll	microsoft
+c:\windows\system32\tapi32.dll	microsoft
+c:\windows\system32\tsd32.dll	microsoft
+c:\windows\system32\tssoft32.acm	microsoft
+c:\windows\system32\urlmon.dll	microsoft
+c:\windows\system32\user32.dll	microsoft
+c:\windows\system32\userenv.dll	microsoft
+c:\windows\system32\usp10.dll	microsoft
+c:\windows\system32\uxtheme.dll	microsoft
+c:\windows\system32\vbscript.dll	microsoft
+c:\windows\system32\vdmdbg.dll	microsoft
+c:\windows\system32\version.dll	microsoft
+c:\windows\system32\wdmaud.drv	microsoft
+c:\windows\system32\windowscodecs.dll	microsoft
+c:\windows\system32\winhttp.dll	microsoft
+c:\windows\system32\wininet.dll	microsoft
+c:\windows\system32\winmm.dll	microsoft
+c:\windows\system32\winnsi.dll	microsoft
+c:\windows\system32\winrnr.dll	microsoft
+c:\windows\system32\winspool.drv	microsoft
+c:\windows\system32\winsta.dll	microsoft
+c:\windows\system32\wintrust.dll	microsoft
+c:\windows\system32\wldap32.dll	microsoft
+c:\windows\system32\ws2_32.dll	microsoft
+c:\windows\system32\ws2help.dll	microsoft
+c:\windows\system32\wscript.exe	microsoft
+c:\windows\system32\wshext.dll	microsoft
+c:\windows\system32\wship6.dll	microsoft
+c:\windows\system32\wshtcpip.dll	microsoft
+c:\windows\system32\wsock32.dll	microsoft
+c:\windows\system32\wtsapi32.dll	microsoft
+c:\windows\system32\wzcsapi.dll	microsoft
+c:\windows\system32\wzcsvc.dll	microsoft
+c:\windows\system32\xpsp2res.dll	microsoft
+c:\windows\system32\macromed\flash\npswf32.dll	adobe
+c:\windows\winsxs\x86_microsoft.vc80.crt_1fc8b3b9a1e18e3b_8.0.50727.3053_none_d08d7bba442a9b36\msvcp80.dll	microsoft
+c:\windows\winsxs\x86_microsoft.vc80.crt_1fc8b3b9a1e18e3b_8.0.50727.3053_none_d08d7bba442a9b36\msvcr80.dll	microsoft
+c:\windows\winsxs\x86_microsoft.vc80.crt_1fc8b3b9a1e18e3b_8.0.50727.3053_x-ww_b80fa8ca\msvcr80.dll	microsoft
+c:\windows\winsxs\x86_microsoft.windows.common-controls_6595b64144ccf1df_5.82.6001.18000_none_886786f450a74a05\comctl32.dll	microsoft
+c:\windows\winsxs\x86_microsoft.windows.common-controls_6595b64144ccf1df_6.0.2600.2982_x-ww_ac3f9c03\comctl32.dll	microsoft
+c:\windows\winsxs\x86_microsoft.windows.common-controls_6595b64144ccf1df_6.0.6001.18000_none_5cdbaa5a083979cc\comctl32.dll	microsoft
+c:\windows\winsxs\x86_microsoft.windows.gdiplus_6595b64144ccf1df_1.0.6001.18065_none_9e7abe2ec9c13222\gdiplus.dll	microsoft
+d:\ firefox\components\browserdirprovider.dll	firefox
+d:\ firefox\components\brwsrcmp.dll	firefox
+d:\ firefox\firefox.exe	firefox
+d:\ firefox\freebl3.dll	firefox
+d:\ firefox\js3250.dll	firefox
+d:\ firefox\mozcrt19.dll	firefox
+d:\ firefox\nspr4.dll	firefox
+d:\ firefox\nss3.dll	firefox
+d:\ firefox\nssckbi.dll	firefox
+d:\ firefox\nssdbm3.dll	firefox
+d:\ firefox\nssutil3.dll	firefox
+d:\ firefox\plc4.dll	firefox
+d:\ firefox\plds4.dll	firefox
+d:\ firefox\plugins\npnul32.dll	firefox
+d:\ firefox\smime3.dll	firefox
+d:\ firefox\softokn3.dll	firefox
+d:\ firefox\sqlite3.dll	sqlite
+d:\ firefox\ssl3.dll	firefox
+d:\ firefox\xpcom.dll	firefox
+d:\ firefox\xul.dll	firefox
+d:\clean\mplayerc.exe	mplayer
+d:\office\office11\1033\ppintl.dll	microsoft
+d:\office\office11\excel.exe	microsoft
+d:\office\office11\gdiplus.dll	microsoft
+d:\office\office11\msohev.dll	microsoft
+d:\office\office11\msostyle.dll	microsoft
+d:\office\office11\powerpnt.exe	microsoft
+d:\office\office11\winword.exe	microsoft
+d:\progra~1\java\jre6\bin\client\jvm.dll	java
+d:\progra~1\java\jre6\bin\hpi.dll	java
+d:\progra~1\java\jre6\bin\java.dll	java
+d:\progra~1\java\jre6\bin\jkernel.dll	java
+d:\progra~1\java\jre6\bin\verify.dll	java
+d:\progra~1\java\jre6\bin\zip.dll	java
+d:\program files\internet explorer\iexplore.exe	microsoft
+d:\program files\java\jre6\bin\awt.dll	java
+d:\program files\java\jre6\bin\deploy.dll	java
+d:\program files\java\jre6\bin\jp2iexp.dll	java
+d:\program files\java\jre6\bin\jp2native.dll	java
+d:\program files\java\jre6\bin\jp2ssv.dll	java
+d:\program files\java\jre6\bin\msvcr71.dll	microsoft
+d:\program files\java\jre6\bin\net.dll	java
+d:\program files\java\jre6\bin\nio.dll	java
+d:\program files\java\jre6\bin\regutils.dll	java
+d:\program files\java\jre6\lib\deploy\jqs\ie\jqs_plugin.dll	java
+d:\program files\microsoft silverlight\3.0.40818.0\agcore.dll	microsoft
+d:\program files\microsoft silverlight\3.0.40818.0\coreclr.dll	microsoft
+d:\program files\microsoft silverlight\3.0.40818.0\npctrl.dll	microsoft
+d:\program files\microsoft silverlight\3.0.40818.0\npctrlui.dll	microsoft
+d:\svnwork\pin\pin-2.6-27887-msvc9-ia32_intel64-windows\ia32\bin\zlib1.dll	microsoft
+d:\unixutils\cp.exe	3rd
+d:\unixutils\ls.exe	3rd
+d:\windows\system32\advapi32.dll	microsoft
+d:\windows\system32\apphelp.dll	microsoft
+d:\windows\system32\atl.dll	microsoft
+d:\windows\system32\browselc.dll	microsoft
+d:\windows\system32\browseui.dll	microsoft
+d:\windows\system32\clbcatq.dll	microsoft
+d:\windows\system32\comctl32.dll	microsoft
+d:\windows\system32\comdlg32.dll	microsoft
+d:\windows\system32\comres.dll	microsoft
+d:\windows\system32\crypt32.dll	microsoft
+d:\windows\system32\cryptnet.dll	microsoft
+d:\windows\system32\cryptui.dll	microsoft
+d:\windows\system32\cscdll.dll	microsoft
+d:\windows\system32\cscui.dll	microsoft
+d:\windows\system32\davclnt.dll	microsoft
+d:\windows\system32\dciman32.dll	microsoft
+d:\windows\system32\ddraw.dll	microsoft
+d:\windows\system32\ddrawex.dll	microsoft
+d:\windows\system32\dnsapi.dll	microsoft
+d:\windows\system32\drprov.dll	microsoft
+d:\windows\system32\dsound.dll	microsoft
+d:\windows\system32\dssenh.dll	microsoft
+d:\windows\system32\dxtmsft.dll	microsoft
+d:\windows\system32\dxtrans.dll	microsoft
+d:\windows\system32\gdi32.dll	microsoft
+d:\windows\system32\hnetcfg.dll	microsoft
+d:\windows\system32\iepeers.dll	microsoft
+d:\windows\system32\imagehlp.dll	microsoft
+d:\windows\system32\imgutil.dll	microsoft
+d:\windows\system32\imm32.dll	microsoft
+d:\windows\system32\jscript.dll	microsoft
+d:\windows\system32\kernel32.dll	microsoft
+d:\windows\system32\macromed\flash\flash10c.ocx	adobe
+d:\windows\system32\mlang.dll	microsoft
+d:\windows\system32\mpr.dll	microsoft
+d:\windows\system32\msasn1.dll	microsoft
+d:\windows\system32\mscms.dll	microsoft
+d:\windows\system32\msctf.dll	microsoft
+d:\windows\system32\msgina.dll	microsoft
+d:\windows\system32\mshtml.dll	microsoft
+d:\windows\system32\mshtmled.dll	microsoft
+d:\windows\system32\msi.dll	microsoft
+d:\windows\system32\msimg32.dll	microsoft
+d:\windows\system32\msimtf.dll	microsoft
+d:\windows\system32\msls31.dll	microsoft
+d:\windows\system32\msvcp60.dll	microsoft
+d:\windows\system32\msvcrt.dll	microsoft
+d:\windows\system32\mswsock.dll	microsoft
+d:\windows\system32\netapi32.dll	microsoft
+d:\windows\system32\netrap.dll	microsoft
+d:\windows\system32\netui0.dll	microsoft
+d:\windows\system32\netui1.dll	microsoft
+d:\windows\system32\ntdll.dll	microsoft
+d:\windows\system32\ntlanman.dll	microsoft
+d:\windows\system32\odbc32.dll	microsoft
+d:\windows\system32\odbcbcp.dll	microsoft
+d:\windows\system32\odbcint.dll	microsoft
+d:\windows\system32\ole32.dll	microsoft
+d:\windows\system32\oleacc.dll	microsoft
+d:\windows\system32\oleaut32.dll	microsoft
+d:\windows\system32\pdh.dll	microsoft
+d:\windows\system32\pngfilt.dll	microsoft
+d:\windows\system32\psapi.dll	microsoft
+d:\windows\system32\pstorec.dll	microsoft
+d:\windows\system32\rasadhlp.dll	microsoft
+d:\windows\system32\rasapi32.dll	microsoft
+d:\windows\system32\rasman.dll	microsoft
+d:\windows\system32\rpcrt4.dll	microsoft
+d:\windows\system32\rsaenh.dll	microsoft
+d:\windows\system32\rtutils.dll	microsoft
+d:\windows\system32\samlib.dll	microsoft
+d:\windows\system32\schannel.dll	microsoft
+d:\windows\system32\secur32.dll	microsoft
+d:\windows\system32\sensapi.dll	microsoft
+d:\windows\system32\setupapi.dll	microsoft
+d:\windows\system32\shdoclc.dll	microsoft
+d:\windows\system32\shdocvw.dll	microsoft
+d:\windows\system32\shell32.dll	microsoft
+d:\windows\system32\shfolder.dll	microsoft
+d:\windows\system32\shgina.dll	microsoft
+d:\windows\system32\shlwapi.dll	microsoft
+d:\windows\system32\sxs.dll	microsoft
+d:\windows\system32\tapi32.dll	microsoft
+d:\windows\system32\urlmon.dll	microsoft
+d:\windows\system32\user32.dll	microsoft
+d:\windows\system32\userenv.dll	microsoft
+d:\windows\system32\uxtheme.dll	microsoft
+d:\windows\system32\vbscript.dll	microsoft
+d:\windows\system32\version.dll	microsoft
+d:\windows\system32\winhttp.dll	microsoft
+d:\windows\system32\wininet.dll	microsoft
+d:\windows\system32\winmm.dll	microsoft
+d:\windows\system32\winrnr.dll	microsoft
+d:\windows\system32\winspool.drv	microsoft
+d:\windows\system32\winsta.dll	microsoft
+d:\windows\system32\wintrust.dll	microsoft
+d:\windows\system32\wldap32.dll	microsoft
+d:\windows\system32\ws2_32.dll	microsoft
+d:\windows\system32\ws2help.dll	microsoft
+d:\windows\system32\wshtcpip.dll	microsoft
+d:\windows\system32\wsock32.dll	microsoft
+d:\windows\system32\xpsp2res.dll	microsoft
+d:\windows\winsxs\x86_microsoft.windows.common-controls_6595b64144ccf1df_6.0.2600.5512_x-ww_35d4ce83\comctl32.dll	microsoft
+e:\download\pin\hello.exe	3rd
+e:\download\pin\zlib1.dll	zlib
+c:\users\rajiv\desktop\wget.exe	wget
