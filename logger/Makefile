@@ -1,20 +1,102 @@
-PIN_HOME = D:\pin-2.8-msvc10
+##
+## This is a sample makefile for building Pin tools outside
+## of the Pin environment.  This makefile is suitable for
+## building with the Pin kit, not a Pin source development tree.
+##
+## To build the tool, execute the make command:
+##
+##      make
+## or
+##      make PIN_HOME=<top-level directory where Pin was installed>
+##
+## After building your tool, you would invoke Pin like this:
+## 
+##      $PIN_HOME/pin -t calltrace -- /bin/ls
+##
+##############################################################
+#
+# User-specific configuration
+#
+##############################################################
 
-CFLAGS = /c /MT /EHs- /EHa- /wd4530 /W3
-CFLAGS = $(CFLAGS) /DTARGET_WINDOWS /DBIGARRAY_MULTIPLIER=1 /DUSING_XED /D_CRT_SECURE_NO_DEPRECATE /D_SECURE_SCL=0
-CFLAGS = $(CFLAGS) /nologo /Gy /O2 /DTARGET_IA32 /DHOST_IA32
-CFLAGS = $(CFLAGS) /I$(PIN_HOME)\source\include /I$(PIN_HOME)\source\include\gen /I$(PIN_HOME)\source\tools\InstLib /I$(PIN_HOME)\extras\xed2-ia32\include
+#
+# 1. Change PIN_HOME to point to the top-level directory where
+#    Pin was installed. This can also be set on the command line,
+#    or as an environment variable.
+#
+PIN_HOME ?= /home/atp/install/pin-2.11-49306-gcc.3.4.6-ia32_intel64-linux
 
-LDFLAGS = /DLL /EXPORT:main /NODEFAULTLIB /NOLOGO /INCREMENTAL:NO /OPT:REF
-LDFLAGS = $(LDFLAGS) /MACHINE:x86 /ENTRY:Ptrace_DllMainCRTStartup@12 /BASE:0x55000000
-LDFLAGS = $(LDFLAGS) /LIBPATH:$(PIN_HOME)\ia32\lib /LIBPATH:$(PIN_HOME)\ia32\lib-ext /LIBPATH:$(PIN_HOME)\extras\xed2-ia32\lib
-LIBS = pin.lib libxed.lib libcpmt.lib libcmt.lib pinvm.lib kernel32.lib ntdll-32.lib zlib.lib
 
-calltrace.dll: calltrace.obj tracebuffer.obj
-	link $(LDFLAGS) /OUT:calltrace.dll calltrace.obj tracebuffer.obj $(LIBS)
+##############################################################
+#
+# set up and include *.config files
+#
+##############################################################
 
-calltrace.obj: calltrace.cpp
-	cl $(CFLAGS) calltrace.cpp
+PIN_KIT=$(PIN_HOME)
+KIT=1
+TESTAPP=$(OBJDIR)cp-pin.exe
 
-tracebuffer.obj: tracebuffer.cpp
-	cl $(CFLAGS) tracebuffer.cpp
+TARGET_COMPILER?=gnu
+ifdef OS
+    ifeq (${OS},Windows_NT)
+        TARGET_COMPILER=ms
+    endif
+endif
+
+ifeq ($(TARGET_COMPILER),gnu)
+    include $(PIN_HOME)/source/tools/makefile.gnu.config
+    CXXFLAGS ?= -Wall -Werror -Wno-unknown-pragmas $(DBG) $(OPT)
+    PIN=$(PIN_HOME)/pin
+endif
+
+ifeq ($(TARGET_COMPILER),ms)
+    include $(PIN_HOME)/source/tools/makefile.ms.config
+    DBG?=
+    PIN=$(PIN_HOME)/pin.bat
+endif
+
+
+##############################################################
+#
+# Tools - you may wish to add your tool name to TOOL_ROOTS
+#
+##############################################################
+
+
+TOOL_ROOTS = calltrace
+
+TOOLS = $(TOOL_ROOTS:%=$(OBJDIR)%$(PINTOOL_SUFFIX))
+
+
+##############################################################
+#
+# build rules
+#
+##############################################################
+
+all: tools
+tools: $(OBJDIR) $(TOOLS) $(OBJDIR)cp-pin.exe
+test: $(OBJDIR) $(TOOL_ROOTS:%=%.test)
+
+calltrace.test: $(OBJDIR)cp-pin.exe
+	$(MAKE) -k PIN_HOME=$(PIN_HOME)
+
+$(OBJDIR)cp-pin.exe:
+	$(CXX) $(PIN_HOME)/source/tools/Tests/cp-pin.cpp $(APP_CXXFLAGS) -o $(OBJDIR)cp-pin.exe
+
+$(OBJDIR):
+	mkdir -p $(OBJDIR)
+
+$(OBJDIR)%.o : %.cpp
+	$(CXX) -c $(CXXFLAGS) $(PIN_CXXFLAGS) ${OUTOPT}$@ $<
+
+$(TOOLS): $(PIN_LIBNAMES)
+
+$(TOOLS): %$(PINTOOL_SUFFIX) : %.o $(OBJDIR)tracebuffer.o
+	${PIN_LD} $(PIN_LDFLAGS) $(LINK_DEBUG) ${LINK_OUT}$@ $^ ${PIN_LPATHS} $(PIN_LIBS) $(DBG) -lz
+
+
+## cleaning
+clean:
+	-rm -rf $(OBJDIR) *.out *.tested *.failed makefile.copy

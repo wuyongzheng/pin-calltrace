@@ -1,7 +1,8 @@
-#include <windows.h>
 #include <stdio.h>
-#include <intrin.h>
+#include <stdlib.h>
+#include <string.h>
 #include "zlib.h"
+#include "osdep.h"
 #include "tracebuffer.h"
 
 #define TB_BUFSIZE 8192
@@ -12,19 +13,19 @@ struct tb_stream {
 
 #define NUM_THREAD 8192
 static struct tb_stream *thread_table[NUM_THREAD];
-static HANDLE tracefp;
+static osdep_file tracefp;
 extern FILE *logfp;
 
 int tb_create (const char *filename)
 {
-	tracefp = CreateFile(filename, FILE_APPEND_DATA, FILE_SHARE_READ, NULL, CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL, NULL);
-	if (tracefp == INVALID_HANDLE_VALUE) {
-		fprintf(logfp, "CreateFile() failed\n");
+	tracefp = osdep_createappend(filename);
+	if (osdep_createfailed(tracefp)) {
+		fprintf(logfp, "create trace file failed\n");
 		fflush(logfp);
 		return -1;
 	}
 
-	ZeroMemory(thread_table, NUM_THREAD*sizeof(void *));
+	memset(thread_table, 0, NUM_THREAD*sizeof(void *));
 
 	return 0;
 }
@@ -38,8 +39,8 @@ void tb_close (void)
 			tb_thread_delete(i);
 	}
 
-	CloseHandle(tracefp);
-	tracefp = NULL;
+	osdep_close(tracefp);
+	tracefp = osdep_invalidhandle;
 }
 
 void tb_thread_create (int tid)
@@ -50,7 +51,7 @@ void tb_thread_create (int tid)
 		return;
 
 	stream = (struct tb_stream *)malloc(sizeof(struct tb_stream));
-	ZeroMemory(&stream->zs, sizeof(z_stream));
+	memset(&stream->zs, 0, sizeof(z_stream));
 
 	if (deflateInit(&stream->zs, Z_DEFAULT_COMPRESSION) != Z_OK) {
 		fprintf(logfp, "Error: deflateInit failed\n");
@@ -74,9 +75,8 @@ void tb_thread_delete (int tid)
 	for (;;) {
 		int z_err = deflate(&stream->zs, Z_FINISH);
 		if (stream->zs.avail_out < TB_BUFSIZE - sizeof(short)*2) {
-			DWORD written;
 			*(unsigned short *)stream->outbuf = TB_BUFSIZE - sizeof(short)*2 - stream->zs.avail_out;
-			WriteFile(tracefp, stream->outbuf, TB_BUFSIZE - stream->zs.avail_out, &written, NULL);
+			osdep_write(tracefp, stream->outbuf, TB_BUFSIZE - stream->zs.avail_out);
 			fprintf(logfp, "write %d bytes\n", TB_BUFSIZE - stream->zs.avail_out);
 			stream->zs.next_out = stream->outbuf + sizeof(short)*2;
 			stream->zs.avail_out = TB_BUFSIZE - sizeof(short)*2;
@@ -89,7 +89,7 @@ void tb_thread_delete (int tid)
 	thread_table[tid] = NULL;
 }
 
-void tb_write (struct event_common *event, int length)
+void tb_write (struct event_common *event, size_t length)
 {
 	struct tb_stream *stream = thread_table[event->tid];
 	if (stream == NULL) {
@@ -102,9 +102,8 @@ void tb_write (struct event_common *event, int length)
 
 	do {
 		if (stream->zs.avail_out == 0) {
-			DWORD written;
 			*(unsigned short *)stream->outbuf = TB_BUFSIZE - sizeof(short)*2;
-			WriteFile(tracefp, stream->outbuf, TB_BUFSIZE, &written, NULL);
+			osdep_write(tracefp, stream->outbuf, TB_BUFSIZE);
 			fprintf(logfp, "write %d bytes\n", TB_BUFSIZE);
 			stream->zs.next_out = stream->outbuf + sizeof(short)*2;
 			stream->zs.avail_out = TB_BUFSIZE - sizeof(short)*2;
@@ -120,14 +119,13 @@ void tb_flush (int tid)
 	stream->zs.avail_in = 0; /* should be zero already anyway */
 
 	for (;;) {
-		int len;
+		size_t len;
 
 		deflate(&stream->zs, Z_SYNC_FLUSH);
 		len = TB_BUFSIZE - sizeof(short)*2 - stream->zs.avail_out;
 		if (len > 0) {
-			DWORD written;
 			*(unsigned short *)stream->outbuf = len;
-			WriteFile(tracefp, stream->outbuf, TB_BUFSIZE - stream->zs.avail_out, &written, NULL);
+			osdep_write(tracefp, stream->outbuf, TB_BUFSIZE - stream->zs.avail_out);
 			fprintf(logfp, "write %d bytes\n", TB_BUFSIZE - sizeof(short)*2 - stream->zs.avail_out);
 			stream->zs.next_out = stream->outbuf + sizeof(short)*2;
 			stream->zs.avail_out = TB_BUFSIZE - sizeof(short)*2;

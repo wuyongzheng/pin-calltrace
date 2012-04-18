@@ -1,15 +1,9 @@
 #include <stdio.h>
+#include <string.h>
 #include <assert.h>
-#include <pin.h>
+#include <pin.H>
 #include "tracebuffer.h"
 #include "eventstruct.h"
-
-#if defined(WIN32) || defined(_WIN32)
-# include <direct.h>
-# define PATH_SEPARATOR '\\'
-#else
-# define PATH_SEPARATOR '/'
-#endif 
 
 int pid;
 FILE *logfp;
@@ -116,7 +110,7 @@ void img_load (IMG img, void *v)
 	struct event_imload *imevent;
 	struct event_symbol *sbevent;
 	char buffer[512];
-	int length;
+	size_t length;
 	ADDRINT imaddr;
 
 	imevent = (struct event_imload *)buffer;
@@ -132,7 +126,7 @@ void img_load (IMG img, void *v)
 	imevent->ismain = IMG_IsMainExecutable(img);
 	memcpy(imevent->name, IMG_Name(img).c_str(), length);
 	imevent->name[length] = '\0';
-	tb_write((event_common *)imevent, imevent->struct_size);
+	tb_write((event_common *)imevent, (size_t)imevent->struct_size);
 
 	sbevent = (struct event_symbol *)buffer;
 	sbevent->comm.type = ET_SYMBOL;
@@ -145,7 +139,7 @@ void img_load (IMG img, void *v)
 		sbevent->addr = imaddr + SYM_Value(sym);
 		memcpy(sbevent->name, SYM_Name(sym).c_str(), length);
 		sbevent->name[length] = '\0';
-		tb_write((event_common *)sbevent, sbevent->struct_size);
+		tb_write((event_common *)sbevent, (size_t)sbevent->struct_size);
 	}
 	tb_flush(PIN_ThreadId());
 
@@ -179,7 +173,7 @@ void img_unload (IMG img, void *v)
 	event->struct_size = (int)((char *)event->name - (char *)event) + name_len + 1;
 	strncpy(event->name, IMG_Name(img).c_str(), name_len);
 	event->name[name_len] = '\0';
-	tb_write((event_common *)event, event->struct_size);
+	tb_write((event_common *)event, (size_t)event->struct_size);
 
 	fprintf(logfp, "img- %08x+%08x %s\n", IMG_StartAddress(img), IMG_SizeMapped(img), IMG_Name(img).c_str());
 }
