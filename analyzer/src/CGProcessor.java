@@ -294,4 +294,6 @@ public class CGProcessor implements Processor
 	{
 		symbols.put(addr, name);
 	}
+
+	public void process_memory (int tid, boolean iswrite, int insaddr, int size, int addr, int value) {}
 }

@@ -79,4 +79,14 @@ struct event_symbol {
 	char name[1]; // null term
 };
 
+#define ET_MEMLOAD 11
+#define ET_MEMSTORE 12
+struct event_memory {
+	struct event_common comm;
+	unsigned long insaddr; // absolute address
+	int size;
+	unsigned long addr;
+	unsigned long value;
+};
+
 #endif

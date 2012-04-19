@@ -129,6 +129,17 @@ outer:
 					proc.process_symbol(tid, addr, name);
 					break;
 				}
+				case 11:
+				case 12: {
+					if (stream.producer - curptr < 16)
+						break outer;
+					int insaddr = bytes_int32(stream.buffer, curptr); curptr += 4;
+					int size = bytes_int32(stream.buffer, curptr); curptr += 4;
+					int addr = bytes_int32(stream.buffer, curptr); curptr += 4;
+					int value = bytes_int32(stream.buffer, curptr); curptr += 4;
+					proc.process_memory(tid, type == 12, insaddr, size, addr, value);
+					break;
+				}
 				default: {
 					throw new RuntimeException("unknown event type " + type);
 				}

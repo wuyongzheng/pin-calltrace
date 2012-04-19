@@ -49,4 +49,10 @@ public class PrintProcessor implements Processor
 	{
 		System.out.printf("sym: %d %08x \"%s\"\n", tid, addr, name);
 	}
+
+	public void process_memory (int tid, boolean iswrite, int insaddr, int size, int addr, int value)
+	{
+		System.out.printf("%s: %d %08x %08x %08x %08x\n",
+				iswrite ? "sto" : "lod", tid, insaddr, size, addr, value);
+	}
 }

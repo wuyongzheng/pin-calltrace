@@ -43,6 +43,57 @@ void trace (TRACE trace, void *v)
 	}
 }
 
+void on_load (THREADID tid, ADDRINT insaddr, ADDRINT addr, ADDRINT size)
+{
+	struct event_memory event;
+	event.comm.type = ET_MEMLOAD;
+	event.comm.tid = tid;
+	event.insaddr = insaddr;
+	event.addr = addr;
+	event.size = size;
+	switch (size) {
+		case 1: event.value = *(unsigned char *)addr; break;
+		case 2: event.value = *(unsigned short *)addr; break;
+		case 4: event.value = *(unsigned long *)addr; break;
+		default: event.value = 0;
+	}
+	tb_write((event_common *)&event, sizeof(event));
+}
+
+void on_store (THREADID tid, ADDRINT insaddr, ADDRINT addr, ADDRINT size)
+{
+	struct event_memory event;
+	event.comm.type = ET_MEMSTORE;
+	event.comm.tid = tid;
+	event.insaddr = insaddr;
+	event.addr = addr;
+	event.size = size;
+	event.value = 0;
+	tb_write((event_common *)&event, sizeof(event));
+}
+
+void instruction (INS ins, void *v)
+{
+	if (INS_IsMemoryRead(ins)) {
+		INS_InsertPredicatedCall(ins, IPOINT_BEFORE, AFUNPTR(on_load),
+				IARG_THREAD_ID, IARG_INST_PTR,
+				IARG_MEMORYREAD_EA, IARG_MEMORYREAD_SIZE,
+				IARG_END);
+	}
+	if (INS_HasMemoryRead2(ins)) {
+		INS_InsertPredicatedCall(ins, IPOINT_BEFORE, AFUNPTR(on_load),
+				IARG_THREAD_ID, IARG_INST_PTR,
+				IARG_MEMORYREAD2_EA, IARG_MEMORYREAD_SIZE,
+				IARG_END);
+	}
+	if (INS_IsMemoryWrite(ins)) { //TODO get value. see SimpleExamples/pinatrace.cpp
+		INS_InsertPredicatedCall(ins, IPOINT_BEFORE, AFUNPTR(on_store),
+				IARG_THREAD_ID, IARG_INST_PTR,
+				IARG_MEMORYWRITE_EA, IARG_MEMORYWRITE_SIZE,
+				IARG_END);
+	}
+}
+
 void thread_start (THREADID tid, CONTEXT *ctxt, INT32 flags, void *v)
 {
 	struct event_thstart event;
@@ -209,6 +260,7 @@ int main (int argc, char *argv[])
 	IMG_AddInstrumentFunction(img_load, NULL);
 	IMG_AddUnloadFunction(img_unload, NULL);
 	TRACE_AddInstrumentFunction(trace, NULL);
+	INS_AddInstrumentFunction(instruction, NULL);
 	PIN_AddSyscallEntryFunction(sys_enter, NULL);
 	PIN_AddSyscallExitFunction(sys_exit, NULL);
 	PIN_AddContextChangeFunction(context_switch, NULL);

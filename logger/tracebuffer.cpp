@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <assert.h>
 #include <stdlib.h>
 #include <string.h>
 #include "zlib.h"
@@ -116,7 +117,7 @@ void tb_flush (int tid)
 {
 	struct tb_stream *stream = thread_table[tid];
 
-	stream->zs.avail_in = 0; /* should be zero already anyway */
+	assert(stream->zs.avail_in == 0);
 
 	for (;;) {
 		size_t len;

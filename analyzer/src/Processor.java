@@ -28,4 +28,5 @@ public interface Processor
 	public void process_imload (int tid, int addr, int size, int entry, boolean ismain, String name);
 	public void process_imunload (int tid, int addr, int size, String name);
 	public void process_symbol (int tid, int addr, String name);
+	public void process_memory (int tid, boolean iswrite, int insaddr, int size, int addr, int value);
 }
