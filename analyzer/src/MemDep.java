@@ -328,13 +328,11 @@ public class MemDep implements Processor
 			mem.put(addr, new MemUnit((short)size, call));
 		} else {
 			Map.Entry<Integer, MemUnit> next = mem.ceilingEntry(addr);
-			if (next != null && next.getKey() - addr < size && call != next.getValue().writer) {
-				System.out.println(call.name + "\t" + next.getValue().writer.name);
-			}
+			if (next != null && next.getKey() - addr < size && call != next.getValue().writer)
+				System.out.printf("%s\t%s\t%x\t%d\n", call.name, next.getValue().writer.name, addr, size);
 			Map.Entry<Integer, MemUnit> prev = mem.floorEntry(addr - 1);
-			if (prev != null && addr - prev.getKey() < prev.getValue().size && call != next.getValue().writer) {
-				System.out.println(call.name + "\t" + prev.getValue().writer.name);
-			}
+			if (prev != null && addr - prev.getKey() < prev.getValue().size && call != next.getValue().writer)
+				System.out.printf("%s\t%s\t%x\t%d\n", call.name, prev.getValue().writer.name, addr, size);
 		}
 	}
 }

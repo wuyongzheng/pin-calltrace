@@ -268,6 +268,5 @@ int main (int argc, char *argv[])
 	PIN_InitSymbols();
 
 	PIN_StartProgram(); // Never returns
-
 	return 0;
 }
