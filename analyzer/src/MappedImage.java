@@ -14,6 +14,6 @@ public class MappedImage
 		this.size = size;
 		this.entry = entry;
 		this.ismain = ismain;
-		name = path.replaceAll(".*\\\\", "").replaceAll("\\....$", "").toLowerCase();
+		name = path.replaceAll(".*[\\\\|/]", "").replaceAll("\\..*", "").toLowerCase();
 	}
 }

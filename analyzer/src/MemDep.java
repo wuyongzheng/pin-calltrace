@@ -92,6 +92,7 @@ public class MemDep implements Processor
 	{
 		Stack<CallContext> contexts;
 		int testalert;
+		long tick;
 
 		public Thread ()
 		{
@@ -126,16 +127,18 @@ public class MemDep implements Processor
 		mem = new TreeMap<Integer, MemUnit>();
 	}
 
-	private Call new_call (int addr, int esp, int retaddr)
+	private Call new_call (int addr, int esp, int retaddr, long tick)
 	{
 		Map.Entry<Integer,MappedImage> entry = images.floorEntry(addr);
 		if (entry == null || entry.getValue().size < addr - entry.getValue().addr)
-			return new Call(addr, esp, retaddr, null, "unknown.#" + Integer.toHexString(addr));
+			return new Call(addr, esp, retaddr, null, "unknown.#" + Integer.toHexString(addr) + "." + tick);
+			//return new Call(addr, esp, retaddr, null, "unknown.#" + Integer.toHexString(addr));
 		MappedImage image = entry.getValue();
 
 		String sym = symbols.get(addr);
 		return new Call(addr, esp, retaddr, image,
-				image.name + "." + (sym == null ? "#" + Integer.toHexString(addr - image.addr) : sym));
+				image.name + "." + (sym == null ? "#" + Integer.toHexString(addr - image.addr) : sym) + "." + tick);
+				//image.name + "." + (sym == null ? "#" + Integer.toHexString(addr - image.addr) : sym));
 	}
 
 	private String addr_to_name (int addr)
@@ -169,7 +172,7 @@ public class MemDep implements Processor
 		}
 
 		/* add to call graph */
-		Call newcall = new_call(target, esp, retaddr);
+		Call newcall = new_call(target, esp, retaddr, thread.tick ++);
 		callgraph.addCall(context, newcall);
 
 		/* append the new esp */

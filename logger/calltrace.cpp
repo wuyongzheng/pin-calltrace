@@ -162,7 +162,6 @@ void img_load (IMG img, void *v)
 	struct event_symbol *sbevent;
 	char buffer[512];
 	size_t length;
-	ADDRINT imaddr;
 
 	imevent = (struct event_imload *)buffer;
 	length = IMG_Name(img).length();
@@ -171,8 +170,8 @@ void img_load (IMG img, void *v)
 	imevent->comm.type = ET_IMLOAD;
 	imevent->comm.tid = PIN_ThreadId();
 	imevent->struct_size = (int)((char *)imevent->name - (char *)imevent) + length + 1;
-	imevent->addr = imaddr = IMG_StartAddress(img);
-	imevent->size = IMG_SizeMapped(img);
+	imevent->addr = IMG_LowAddress(img);
+	imevent->size = IMG_HighAddress(img) - IMG_LowAddress(img);
 	imevent->entry = IMG_Entry(img);
 	imevent->ismain = IMG_IsMainExecutable(img);
 	memcpy(imevent->name, IMG_Name(img).c_str(), length);
@@ -187,7 +186,7 @@ void img_load (IMG img, void *v)
 		if (length > sizeof(buffer) - sizeof(struct event_symbol))
 			length = sizeof(buffer) - sizeof(struct event_symbol);
 		sbevent->struct_size = (int)((char *)sbevent->name - (char *)sbevent) + length + 1;
-		sbevent->addr = imaddr + SYM_Value(sym);
+		sbevent->addr = SYM_Address(sym);
 		memcpy(sbevent->name, SYM_Name(sym).c_str(), length);
 		sbevent->name[length] = '\0';
 		tb_write((event_common *)sbevent, (size_t)sbevent->struct_size);
