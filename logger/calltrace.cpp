@@ -176,6 +176,7 @@ static void process_symbol (char *name, ADDRINT addr)
 	//sbevent->name[length] = '\0';
 	*(sbevent->name + length) = '\0';
 	tb_write((event_common *)sbevent, (size_t)sbevent->struct_size);
+	fprintf(logfp, "sym %08x %s\n", addr, name);
 }
 
 void img_load (IMG img, void *v)
@@ -183,6 +184,11 @@ void img_load (IMG img, void *v)
 	struct event_imload *imevent;
 	char buffer[512];
 	size_t length;
+
+/*	fprintf(stderr, "load %s off=%08x low=%08x high=%08x start=%08x size=%08x\n",
+			IMG_Name(img).c_str(),
+			IMG_LoadOffset(img), IMG_LowAddress(img), IMG_HighAddress(img),
+			IMG_StartAddress(img), IMG_SizeMapped(img));*/
 
 	imevent = (struct event_imload *)buffer;
 	length = IMG_Name(img).length();

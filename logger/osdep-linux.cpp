@@ -2,21 +2,12 @@
 #include <string.h>
 #include <assert.h>
 #include <pin.H>
+#include <unordered_set>
 #include <gelf.h>
 #include "osdep.h"
 
-void osdep_iterate_symbols (IMG img, osdep_process_symbol proc)
+static void iterate_elf_symbols (Elf *elf, ADDRINT loadoff, std::unordered_set<ADDRINT> &added, osdep_process_symbol proc)
 {
-/*	fprintf(stderr, "load %s off=%08x low=%08x high=%08x start=%08x size=%08x\n",
-			IMG_Name(img).c_str(),
-			IMG_LoadOffset(img), IMG_LowAddress(img), IMG_HighAddress(img),
-			IMG_StartAddress(img), IMG_SizeMapped(img));*/
-	ADDRINT loadoff = IMG_LoadOffset(img);
-
-	assert(elf_version(EV_CURRENT) != EV_NONE);
-	Elf *elf = elf_memory((char *)IMG_StartAddress(img), IMG_SizeMapped(img));
-	assert(elf != NULL);
-	assert(elf_kind(elf) == ELF_K_ELF);
 	size_t shstrndx;
 	{
 		// assert(elf_getshdrstrndx(elf , &shstrndx) == 0);
@@ -46,10 +37,13 @@ void osdep_iterate_symbols (IMG img, osdep_process_symbol proc)
 
 		GElf_Sym sym;
 		for (int i = 0; gelf_getsym(data, i, &sym) == &sym; i ++) {
-			if (sym.st_value == 0 || GELF_ST_BIND(sym.st_info) != STT_FUNC)
+			if (sym.st_value == 0 || GELF_ST_TYPE(sym.st_info) != STT_FUNC)
 				continue;
 			char *symname = elf_strptr(elf, shdr.sh_link, (size_t)sym.st_name);
-			proc(symname, (ADDRINT)sym.st_value);
+			if (added.find((ADDRINT)sym.st_value) == added.end()) { // such a funny way of expressing set.exists()
+				proc(symname, (ADDRINT)sym.st_value + loadoff);
+				added.insert(sym.st_value);
+			}
 			/*printf("%04x %02x %02x %04x %08x %s\n",
 					sym.st_shndx, sym.st_other, sym.st_info,
 					(unsigned int)sym.st_size, (unsigned int)sym.st_value, symname);*/
@@ -91,9 +85,35 @@ void osdep_iterate_symbols (IMG img, osdep_process_symbol proc)
 			char buffer[256];
 			assert(strlen(symname) + 4 < sizeof(buffer));
 			snprintf(buffer, sizeof(buffer), "%s@plt", symname);
-			proc(buffer, pltaddr + index * 16 + loadoff); // seems both 32 and 64 ELF have 16 plt call stub.
+			if (added.find((ADDRINT)(pltaddr + index * 16)) == added.end()) {
+				proc(buffer, pltaddr + index * 16 + loadoff); // seems both 32 and 64 ELF have 16 plt call stub.
+				added.insert(pltaddr + index * 16);
+			}
 		}
 	}
+}
 
+void osdep_iterate_symbols (IMG img, osdep_process_symbol proc)
+{
+	ADDRINT loadoff = IMG_LoadOffset(img);
+	assert(elf_version(EV_CURRENT) != EV_NONE);
+	std::unordered_set<ADDRINT> added;
+
+	char path[256];
+	snprintf(path, sizeof(path), "/usr/lib/debug%s.debug", IMG_Name(img).c_str());
+	int fd = open(path, O_RDONLY);
+	if (fd != -1) {
+		Elf *elf = elf_begin(fd, ELF_C_READ, NULL);
+		assert(elf != NULL);
+		assert(elf_kind(elf) == ELF_K_ELF);
+		iterate_elf_symbols(elf, loadoff, added, proc);
+		elf_end(elf);
+		close(fd);
+	}
+
+	Elf *elf = elf_memory((char *)IMG_StartAddress(img), IMG_SizeMapped(img));
+	assert(elf != NULL);
+	assert(elf_kind(elf) == ELF_K_ELF);
+	iterate_elf_symbols(elf, loadoff, added, proc);
 	elf_end(elf);
 }
