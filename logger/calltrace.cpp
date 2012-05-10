@@ -2,6 +2,7 @@
 #include <string.h>
 #include <assert.h>
 #include <pin.H>
+#include "osdep.h"
 #include "tracebuffer.h"
 #include "eventstruct.h"
 
@@ -155,11 +156,31 @@ void fini (INT32 code, void *v)
 	fclose(logfp);
 }
 
+static void process_symbol (char *name, ADDRINT addr)
+{
+	struct event_symbol *sbevent;
+	char buffer[512];
+	size_t length;
+
+	sbevent = (struct event_symbol *)buffer;
+	sbevent->comm.type = ET_SYMBOL;
+	sbevent->comm.tid = PIN_ThreadId();
+
+	length = strlen(name);
+	assert(length > 0);
+	if (length > sizeof(buffer) - sizeof(struct event_symbol))
+		length = sizeof(buffer) - sizeof(struct event_symbol);
+	sbevent->struct_size = (int)((char *)sbevent->name - (char *)sbevent) + length + 1;
+	sbevent->addr = addr;
+	memcpy(sbevent->name, name, length);
+	//sbevent->name[length] = '\0';
+	*(sbevent->name + length) = '\0';
+	tb_write((event_common *)sbevent, (size_t)sbevent->struct_size);
+}
+
 void img_load (IMG img, void *v)
 {
-	SYM sym;
 	struct event_imload *imevent;
-	struct event_symbol *sbevent;
 	char buffer[512];
 	size_t length;
 
@@ -178,33 +199,10 @@ void img_load (IMG img, void *v)
 	imevent->name[length] = '\0';
 	tb_write((event_common *)imevent, (size_t)imevent->struct_size);
 
-	sbevent = (struct event_symbol *)buffer;
-	sbevent->comm.type = ET_SYMBOL;
-	sbevent->comm.tid = PIN_ThreadId();
-	for (sym = IMG_RegsymHead(img); SYM_Valid(sym); sym = SYM_Next(sym)) {
-		length = SYM_Name(sym).length();
-		if (length > sizeof(buffer) - sizeof(struct event_symbol))
-			length = sizeof(buffer) - sizeof(struct event_symbol);
-		sbevent->struct_size = (int)((char *)sbevent->name - (char *)sbevent) + length + 1;
-		sbevent->addr = SYM_Address(sym);
-		memcpy(sbevent->name, SYM_Name(sym).c_str(), length);
-		sbevent->name[length] = '\0';
-		tb_write((event_common *)sbevent, (size_t)sbevent->struct_size);
-	}
+	osdep_iterate_symbols(img, process_symbol);
 	tb_flush(PIN_ThreadId());
 
 	fprintf(logfp, "img+ %08x+%08x %s\n", IMG_StartAddress(img), IMG_SizeMapped(img), IMG_Name(img).c_str());
-
-//	for (sym = IMG_RegsymHead(img); SYM_Valid(sym); sym = SYM_Next(sym)) {
-//		fprintf(logfp, "sym %08x %d %s\n", SYM_Value(sym), SYM_Dynamic(sym), SYM_Name(sym).c_str());
-//	}
-	for (SEC sec = IMG_SecHead(img); SEC_Valid(sec); sec = SEC_Next(sec)) {
-		for (RTN rtn = SEC_RtnHead(sec); RTN_Valid(rtn); rtn = RTN_Next(rtn)) {
-			sym = RTN_Sym(rtn);
-			if (SYM_Valid(sym))
-				fprintf(logfp, "sym %08x %d %s\n", SYM_Value(sym), SYM_Dynamic(sym), SYM_Name(sym).c_str());
-		}
-	}
 }
 
 void img_unload (IMG img, void *v)

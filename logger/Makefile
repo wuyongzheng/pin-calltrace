@@ -93,7 +93,7 @@ $(OBJDIR)%.o : %.cpp
 
 $(TOOLS): $(PIN_LIBNAMES)
 
-$(TOOLS): %$(PINTOOL_SUFFIX) : %.o $(OBJDIR)tracebuffer.o
+$(TOOLS): %$(PINTOOL_SUFFIX) : %.o $(OBJDIR)tracebuffer.o $(OBJDIR)osdep-linux.o
 	${PIN_LD} $(PIN_LDFLAGS) $(LINK_DEBUG) ${LINK_OUT}$@ $^ ${PIN_LPATHS} $(PIN_LIBS) $(DBG) -lz
 
 

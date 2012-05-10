@@ -1,6 +1,8 @@
 #ifndef OSDEP_H
 #define OSDEP_H
 
+#include <pin.H>
+
 #if defined(WIN32) || defined(_WIN32)
 
 #include <windows.h>
@@ -26,5 +28,8 @@
 #define osdep_close(handle) close(handle)
 
 #endif // ifdef WIN32
+
+typedef void (*osdep_process_symbol) (char *name, ADDRINT addr);
+void osdep_iterate_symbols (IMG img, osdep_process_symbol proc);
 
 #endif // OSDEP_H
