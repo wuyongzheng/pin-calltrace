@@ -29,7 +29,7 @@
 
 #endif // ifdef WIN32
 
-typedef void (*osdep_process_symbol) (char *name, ADDRINT addr);
-void osdep_iterate_symbols (IMG img, osdep_process_symbol proc);
+typedef void (*osdep_process_symbol) (void *priv, char *name, ADDRINT addr);
+void osdep_iterate_symbols (IMG img, osdep_process_symbol proc, void *priv);
 
 #endif // OSDEP_H

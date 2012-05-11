@@ -156,11 +156,14 @@ void fini (INT32 code, void *v)
 	fclose(logfp);
 }
 
-static void process_symbol (char *name, ADDRINT addr)
+static void process_symbol (void *priv, char *name, ADDRINT addr)
 {
 	struct event_symbol *sbevent;
 	char buffer[512];
 	size_t length;
+	IMG *img = (IMG *)priv;
+
+	assert(addr >= IMG_LowAddress(*img) && addr < IMG_HighAddress(*img));
 
 	sbevent = (struct event_symbol *)buffer;
 	sbevent->comm.type = ET_SYMBOL;
@@ -205,7 +208,7 @@ void img_load (IMG img, void *v)
 	imevent->name[length] = '\0';
 	tb_write((event_common *)imevent, (size_t)imevent->struct_size);
 
-	osdep_iterate_symbols(img, process_symbol);
+	osdep_iterate_symbols(img, process_symbol, (void *)&img);
 	tb_flush(PIN_ThreadId());
 
 	fprintf(logfp, "img+ %08x+%08x %s\n", IMG_StartAddress(img), IMG_SizeMapped(img), IMG_Name(img).c_str());

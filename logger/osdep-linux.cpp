@@ -6,7 +6,7 @@
 #include <gelf.h>
 #include "osdep.h"
 
-static void iterate_elf_symbols (Elf *elf, ADDRINT loadoff, std::unordered_set<ADDRINT> &added, osdep_process_symbol proc)
+static void iterate_elf_symbols (Elf *elf, ADDRINT loadoff, std::unordered_set<ADDRINT> &added, osdep_process_symbol proc, void *priv)
 {
 	size_t shstrndx;
 	{
@@ -41,7 +41,7 @@ static void iterate_elf_symbols (Elf *elf, ADDRINT loadoff, std::unordered_set<A
 				continue;
 			char *symname = elf_strptr(elf, shdr.sh_link, (size_t)sym.st_name);
 			if (added.find((ADDRINT)sym.st_value) == added.end()) { // such a funny way of expressing set.exists()
-				proc(symname, (ADDRINT)sym.st_value + loadoff);
+				proc(priv, symname, (ADDRINT)sym.st_value + loadoff);
 				added.insert(sym.st_value);
 			}
 			/*printf("%04x %02x %02x %04x %08x %s\n",
@@ -86,14 +86,14 @@ static void iterate_elf_symbols (Elf *elf, ADDRINT loadoff, std::unordered_set<A
 			assert(strlen(symname) + 4 < sizeof(buffer));
 			snprintf(buffer, sizeof(buffer), "%s@plt", symname);
 			if (added.find((ADDRINT)(pltaddr + index * 16)) == added.end()) {
-				proc(buffer, pltaddr + index * 16 + loadoff); // seems both 32 and 64 ELF have 16 plt call stub.
+				proc(priv, buffer, pltaddr + index * 16 + loadoff); // seems both 32 and 64 ELF have 16 plt call stub.
 				added.insert(pltaddr + index * 16);
 			}
 		}
 	}
 }
 
-void osdep_iterate_symbols (IMG img, osdep_process_symbol proc)
+void osdep_iterate_symbols (IMG img, osdep_process_symbol proc, void *priv)
 {
 	ADDRINT loadoff = IMG_LoadOffset(img);
 	assert(elf_version(EV_CURRENT) != EV_NONE);
@@ -106,7 +106,9 @@ void osdep_iterate_symbols (IMG img, osdep_process_symbol proc)
 		Elf *elf = elf_begin(fd, ELF_C_READ, NULL);
 		assert(elf != NULL);
 		assert(elf_kind(elf) == ELF_K_ELF);
-		iterate_elf_symbols(elf, loadoff, added, proc);
+		GElf_Ehdr ehdr;
+		assert(gelf_getehdr(elf, &ehdr) == &ehdr);
+		iterate_elf_symbols(elf, loadoff + IMG_Entry(img) - ehdr.e_entry, added, proc, priv);
 		elf_end(elf);
 		close(fd);
 	}
@@ -114,6 +116,6 @@ void osdep_iterate_symbols (IMG img, osdep_process_symbol proc)
 	Elf *elf = elf_memory((char *)IMG_StartAddress(img), IMG_SizeMapped(img));
 	assert(elf != NULL);
 	assert(elf_kind(elf) == ELF_K_ELF);
-	iterate_elf_symbols(elf, loadoff, added, proc);
+	iterate_elf_symbols(elf, loadoff, added, proc, priv);
 	elf_end(elf);
 }
