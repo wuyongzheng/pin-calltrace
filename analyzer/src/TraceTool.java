@@ -30,9 +30,10 @@ public class TraceTool
 			Parser.parse(trace, new CGProcessor(callgraph));
 			callgraph.writeDOT(trace.replaceAll("\\.[^.]*$", ".dot"));
 		} else if (tool.equals("mem")) {
-			BasicCallGraph callgraph = new BasicCallGraph(false);
-			Parser.parse(trace, new MemDep(callgraph));
-			callgraph.writeDOT(trace.replaceAll("\\.[^.]*$", ".dot"));
+			MemDep dep = new MemDep();
+			dep.start();
+			Parser.parse(trace, dep);
+			dep.end();
 		} else if (tool.equals("hit")) {
 			HashSet<String> funcs = new HashSet<String>();
 			boolean regexp = false;

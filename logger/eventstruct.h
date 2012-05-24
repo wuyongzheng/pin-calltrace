@@ -84,6 +84,7 @@ struct event_symbol {
 struct event_memory {
 	struct event_common comm;
 	unsigned long insaddr; // absolute address
+	int opcode; // XED_ICLASS_* in pin/extras/xed2-ia32/include/xed-iclass-enum.h
 	int size;
 	unsigned long addr;
 	unsigned long value;

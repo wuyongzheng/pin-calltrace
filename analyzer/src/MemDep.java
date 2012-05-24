@@ -4,6 +4,8 @@ import java.io.*;
 public class MemDep implements Processor
 {
 	private static final boolean debug = false;
+	private static final boolean ignore_callret = true;
+	private static final boolean warn_miscall = false;
 	private static final String [] winxp_syscall1 = {
 		"NtAcceptConnectPort","NtAccessCheck","NtAccessCheckAndAuditAlarm","NtAccessCheckByType",
 		"NtAccessCheckByTypeAndAuditAlarm","NtAccessCheckByTypeResultList","NtAccessCheckByTypeResultListAndAuditAlarm","NtAccessCheckByTypeResultListAndAuditAlarmByHandle",
@@ -77,6 +79,96 @@ public class MemDep implements Processor
 		"NtWriteRequestData","NtWriteVirtualMemory","NtYieldExecution","NtCreateKeyedEvent",
 		"NtOpenKeyedEvent","NtReleaseKeyedEvent","NtWaitForKeyedEvent","NtQueryPortInformationProcess"
 	};
+	private static final String [] linux32_syscall = {
+		"syscall_0", "exit", "fork", "read",
+		"write", "open", "close", "waitpid",
+		"creat", "link", "unlink", "execve",
+		"chdir", "time", "mknod", "chmod",
+		"lchown", "break", "oldstat", "lseek",
+		"getpid", "mount", "umount", "setuid",
+		"getuid", "stime", "ptrace", "alarm",
+		"oldfstat", "pause", "utime", "stty",
+		"gtty", "access", "nice", "ftime",
+		"sync", "kill", "rename", "mkdir",
+		"rmdir", "dup", "pipe", "times",
+		"prof", "brk", "setgid", "getgid",
+		"signal", "geteuid", "getegid", "acct",
+		"umount2", "lock", "ioctl", "fcntl",
+		"mpx", "setpgid", "ulimit", "oldolduname",
+		"umask", "chroot", "ustat", "dup2",
+		"getppid", "getpgrp", "setsid", "sigaction",
+		"sgetmask", "ssetmask", "setreuid", "setregid",
+		"sigsuspend", "sigpending", "sethostname", "setrlimit",
+		"getrlimit", "getrusage", "gettimeofday", "settimeofday",
+		"getgroups", "setgroups", "select", "symlink",
+		"oldlstat", "readlink", "uselib", "swapon",
+		"reboot", "readdir", "mmap", "munmap",
+		"truncate", "ftruncate", "fchmod", "fchown",
+		"getpriority", "setpriority", "profil", "statfs",
+		"fstatfs", "ioperm", "socketcall", "syslog",
+		"setitimer", "getitimer", "stat", "lstat",
+		"fstat", "olduname", "iopl", "vhangup",
+		"idle", "vm86old", "wait4", "swapoff",
+		"sysinfo", "ipc", "fsync", "sigreturn",
+		"clone", "setdomainname", "uname", "modify_ldt",
+		"adjtimex", "mprotect", "sigprocmask", "create_module",
+		"init_module", "delete_module", "get_kernel_syms", "quotactl",
+		"getpgid", "fchdir", "bdflush", "sysfs",
+		"personality", "afs_syscall", "setfsuid", "setfsgid",
+		"_llseek", "getdents", "_newselect", "flock",
+		"msync", "readv", "writev", "getsid",
+		"fdatasync", "_sysctl", "mlock", "munlock",
+		"mlockall", "munlockall", "sched_setparam", "sched_getparam",
+		"sched_setscheduler", "sched_getscheduler", "sched_yield", "sched_get_priority_max",
+		"sched_get_priority_min", "sched_rr_get_interval", "nanosleep", "mremap",
+		"setresuid", "getresuid", "vm86", "query_module",
+		"poll", "nfsservctl", "setresgid", "getresgid",
+		"prctl", "rt_sigreturn", "rt_sigaction", "rt_sigprocmask",
+		"rt_sigpending", "rt_sigtimedwait", "rt_sigqueueinfo", "rt_sigsuspend",
+		"pread64", "pwrite64", "chown", "getcwd",
+		"capget", "capset", "sigaltstack", "sendfile",
+		"getpmsg", "putpmsg", "vfork", "ugetrlimit",
+		"mmap2", "truncate64", "ftruncate64", "stat64",
+		"lstat64", "fstat64", "lchown32", "getuid32",
+		"getgid32", "geteuid32", "getegid32", "setreuid32",
+		"setregid32", "getgroups32", "setgroups32", "fchown32",
+		"setresuid32", "getresuid32", "setresgid32", "getresgid32",
+		"chown32", "setuid32", "setgid32", "setfsuid32",
+		"setfsgid32", "pivot_root", "mincore", "madvise",
+		"getdents64", "fcntl64", "syscall_222", "syscall_223",
+		"gettid", "readahead", "setxattr", "lsetxattr",
+		"fsetxattr", "getxattr", "lgetxattr", "fgetxattr",
+		"listxattr", "llistxattr", "flistxattr", "removexattr",
+		"lremovexattr", "fremovexattr", "tkill", "sendfile64",
+		"futex", "sched_setaffinity", "sched_getaffinity", "set_thread_area",
+		"get_thread_area", "io_setup", "io_destroy", "io_getevents",
+		"io_submit", "io_cancel", "fadvise64", "syscall_251",
+		"exit_group", "lookup_dcookie", "epoll_create", "epoll_ctl",
+		"epoll_wait", "remap_file_pages", "set_tid_address", "timer_create",
+		"timer_settime", "timer_gettime", "timer_getoverrun", "timer_delete",
+		"clock_settime", "clock_gettime", "clock_getres", "clock_nanosleep",
+		"statfs64", "fstatfs64", "tgkill", "utimes",
+		"fadvise64_64", "vserver", "mbind", "get_mempolicy",
+		"set_mempolicy", "mq_open", "mq_unlink", "mq_timedsend",
+		"mq_timedreceive", "mq_notify", "mq_getsetattr", "kexec_load",
+		"waitid", "syscall_285", "add_key", "request_key",
+		"keyctl", "ioprio_set", "ioprio_get", "inotify_init",
+		"inotify_add_watch", "inotify_rm_watch", "migrate_pages", "openat",
+		"mkdirat", "mknodat", "fchownat", "futimesat",
+		"fstatat64", "unlinkat", "renameat", "linkat",
+		"symlinkat", "readlinkat", "fchmodat", "faccessat",
+		"pselect6", "ppoll", "unshare", "set_robust_list",
+		"get_robust_list", "splice", "sync_file_range", "tee",
+		"vmsplice", "move_pages", "getcpu", "epoll_pwait",
+		"utimensat", "signalfd", "timerfd_create", "eventfd",
+		"fallocate", "timerfd_settime", "timerfd_gettime", "signalfd4",
+		"eventfd2", "epoll_create1", "dup3", "pipe2",
+		"inotify_init1", "preadv", "pwritev", "rt_tgsigqueueinfo",
+		"perf_event_open", "recvmmsg", "fanotify_init", "fanotify_mark",
+		"prlimit64", "name_to_handle_at", "open_by_handle_at", "clock_adjtime",
+		"syncfs", "sendmmsg", "setns", "process_vm_readv",
+		"process_vm_writev"
+	};
 
 	public static boolean unsigned_int_lt (int a, int b)
 	{
@@ -112,33 +204,39 @@ public class MemDep implements Processor
 		}
 	}
 
-	private AbstractCallGraph callgraph;
 	private ArrayList<Thread> threads;
 	public TreeMap<Integer, MappedImage> images; //FIXME
 	private TreeMap<Integer, String> symbols;
 	private TreeMap<Integer, MemUnit> mem;
+	private PrintWriter outdep;
+	private PrintWriter outcall;
 
-	public MemDep (AbstractCallGraph callgraph)
+	public MemDep ()
 	{
-		this.callgraph = callgraph;
 		threads = new ArrayList<Thread>();
 		images = new TreeMap<Integer, MappedImage>();
 		symbols = new TreeMap<Integer, String>();
 		mem = new TreeMap<Integer, MemUnit>();
+		try {
+			outdep = new PrintWriter("outdep.txt");
+			outcall = new PrintWriter("outcall.txt");
+		} catch (FileNotFoundException x) {
+			throw new RuntimeException(x);
+		}
 	}
 
 	private Call new_call (int addr, int esp, int retaddr, long tick)
 	{
 		Map.Entry<Integer,MappedImage> entry = images.floorEntry(addr);
 		if (entry == null || entry.getValue().size < addr - entry.getValue().addr)
-			return new Call(addr, esp, retaddr, null, "unknown.#" + Integer.toHexString(addr) + "." + tick);
-			//return new Call(addr, esp, retaddr, null, "unknown.#" + Integer.toHexString(addr));
+			//return new Call(addr, esp, retaddr, null, "unknown.#" + Integer.toHexString(addr) + "." + tick);
+			return new Call(addr, esp, retaddr, null, "unknown.#" + Integer.toHexString(addr));
 		MappedImage image = entry.getValue();
 
 		String sym = symbols.get(addr);
 		return new Call(addr, esp, retaddr, image,
-				image.name + "." + (sym == null ? "#" + Integer.toHexString(addr - image.addr) : sym) + "." + tick);
-				//image.name + "." + (sym == null ? "#" + Integer.toHexString(addr - image.addr) : sym));
+				//image.name + "." + (sym == null ? "#" + Integer.toHexString(addr - image.addr) : sym) + "." + tick);
+				image.name + "." + (sym == null ? "#" + Integer.toHexString(addr - image.addr) : sym));
 	}
 
 	private String addr_to_name (int addr)
@@ -155,6 +253,18 @@ public class MemDep implements Processor
 		}
 	}
 
+	public void start ()
+	{
+	}
+
+	public void end ()
+	{
+		outdep.close();
+		outdep = null;
+		outcall.close();
+		outcall = null;
+	}
+
 	public void process_call (int tid, int target, int retaddr, int esp)
 	{
 		if (debug)
@@ -165,15 +275,17 @@ public class MemDep implements Processor
 
 		/* remove earlier calls if necessary */
 		while (unsigned_int_le(context.stack.peek().esp, esp)) {
-			Call unmatched = context.stack.pop(); //TODO warn removed call
-			System.err.printf("Warning: call %x,%x,%x or %s don't have return\n",
-					unmatched.addr, unmatched.esp, unmatched.retaddr,
-					addr_to_name(unmatched.addr));
+			Call unmatched = context.stack.pop();
+			if (warn_miscall)
+				System.err.printf("Warning: call %x,%x,%x or %s doesn't have return\n",
+						unmatched.addr, unmatched.esp, unmatched.retaddr,
+						addr_to_name(unmatched.addr));
 		}
 
-		/* add to call graph */
 		Call newcall = new_call(target, esp, retaddr, thread.tick ++);
-		callgraph.addCall(context, newcall);
+		if (newcall.name.equals("ld-linux._dl_fixup"))
+			return;
+		outcall.printf("%s\t%s\n", context.stack.peek().name, newcall.name);
 
 		/* append the new esp */
 		context.stack.push(newcall);
@@ -197,11 +309,13 @@ public class MemDep implements Processor
 				break;
 			} else if (unsigned_int_lt(closing.esp, esp)) { /* unmatched call */
 				Call unmatched = context.stack.pop();
-				System.err.printf("Warning: call %x,%x,%x or %s don't have return\n",
-						unmatched.addr, unmatched.esp, unmatched.retaddr,
-						addr_to_name(unmatched.addr));
+				if (warn_miscall)
+					System.err.printf("Warning: call %x,%x,%x or %s doesn't have return\n",
+							unmatched.addr, unmatched.esp, unmatched.retaddr,
+							addr_to_name(unmatched.addr));
 			} else { /* unmatched return */
-				System.err.printf("Warning: return don't have call\n");
+				if (warn_miscall)
+					System.err.printf("Warning: return doesn't have call\n");
 				break;
 			}
 		}
@@ -219,18 +333,19 @@ public class MemDep implements Processor
 		String callname;
 		if (standard == SYSCALL_STANDARD_IA32_WINDOWS_FAST && sysnum >= 0 && sysnum < winxp_syscall1.length)
 			callname = "syscall." + winxp_syscall1[sysnum];
+		else if (standard == SYSCALL_STANDARD_IA32_LINUX && sysnum >= 0 && sysnum < linux32_syscall.length)
+			callname = "syscall." + linux32_syscall[sysnum];
 		else
 			callname = "syscall." + standard + "." + sysnum;
-		callgraph.addSysCall(context, callname);
 
-		if (standard == SYSCALL_STANDARD_WINDOWS_INT || sysnum == 0x014) {
+		if (standard == SYSCALL_STANDARD_WINDOWS_INT || (standard == SYSCALL_STANDARD_IA32_WINDOWS_FAST && sysnum == 0x014)) {
 			// 0x014 means NtCallbackReturn
 			context = thread.contexts.pop();
 			if (context.type != CallContext.CALLBACK)
 				throw new RuntimeException("NtCallbackReturn doesn't match CALLBACK context. standard=" +
 						standard + ",sysnum=" + sysnum + ",context.type=" + context.type +
 						",tid=" + tid);
-		} else if (sysnum == 0x020) {
+		} else if (standard == SYSCALL_STANDARD_IA32_WINDOWS_FAST && sysnum == 0x020) {
 			// 0x020 means NtContinue
 			if (thread.testalert > 0)
 				thread.testalert --;
@@ -241,7 +356,7 @@ public class MemDep implements Processor
 							standard + ",sysnum=" + sysnum + ",context.type=" + context.type +
 							",tid=" + tid);
 			}
-		} else if (sysnum == 0x103) {
+		} else if (standard == SYSCALL_STANDARD_IA32_WINDOWS_FAST && sysnum == 0x103) {
 			thread.testalert ++;
 		}
 	}
@@ -311,7 +426,7 @@ public class MemDep implements Processor
 		symbols.put(addr, name);
 	}
 
-	public void process_memory (int tid, boolean iswrite, int insaddr, int size, int addr, int value)
+	public void process_memory (int tid, boolean iswrite, int insaddr, int opcode, int size, int addr, int value)
 	{
 		Thread thread = threads.get(tid);
 		CallContext context = thread.contexts.peek();
@@ -328,14 +443,23 @@ public class MemDep implements Processor
 			if (prev != null && addr - prev.getKey() < prev.getValue().size) {
 				mem.remove(prev.getKey());
 			}
+
+			if (ignore_callret && (opcode == PinOpcodeClass32.XED_ICLASS_CALL_FAR.ordinal() || opcode == PinOpcodeClass32.XED_ICLASS_CALL_NEAR.ordinal()))
+				return;
+
 			mem.put(addr, new MemUnit((short)size, call));
 		} else {
+			if (ignore_callret && (opcode == PinOpcodeClass32.XED_ICLASS_RET_FAR.ordinal() || opcode == PinOpcodeClass32.XED_ICLASS_RET_NEAR.ordinal()))
+				return;
+
 			Map.Entry<Integer, MemUnit> next = mem.ceilingEntry(addr);
 			if (next != null && next.getKey() - addr < size && call != next.getValue().writer)
-				System.out.printf("%s\t%s\t%x\t%d\n", call.name, next.getValue().writer.name, addr, size);
+				//System.out.printf("%s\t%s\t%x\t%d\n", call.name, next.getValue().writer.name, addr, size);
+				outdep.printf("%s\t%s\t%x\t%d\n", call.name, next.getValue().writer.name, addr, size);
 			Map.Entry<Integer, MemUnit> prev = mem.floorEntry(addr - 1);
 			if (prev != null && addr - prev.getKey() < prev.getValue().size && call != next.getValue().writer)
-				System.out.printf("%s\t%s\t%x\t%d\n", call.name, prev.getValue().writer.name, addr, size);
+				//System.out.printf("%s\t%s\t%x\t%d\n", call.name, prev.getValue().writer.name, addr, size);
+				outdep.printf("%s\t%s\t%x\t%d\n", call.name, prev.getValue().writer.name, addr, size);
 		}
 	}
 }

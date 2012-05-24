@@ -18,6 +18,9 @@ public interface Processor
 	public static final int SYSCALL_STANDARD_WOW64              = 9;
 	public static final int SYSCALL_STANDARD_WINDOWS_INT        = 10;
 
+	public void start ();
+	public void end ();
+
 	public void process_call (int tid, int target, int retadd, int esp);
 	public void process_return (int tid, int retadd, int esp);
 	public void process_sysenter (int tid, int standard, int sysnum);
@@ -28,5 +31,5 @@ public interface Processor
 	public void process_imload (int tid, int addr, int size, int entry, boolean ismain, String name);
 	public void process_imunload (int tid, int addr, int size, String name);
 	public void process_symbol (int tid, int addr, String name);
-	public void process_memory (int tid, boolean iswrite, int insaddr, int size, int addr, int value);
+	public void process_memory (int tid, boolean iswrite, int insaddr, int opcode, int size, int addr, int value);
 }

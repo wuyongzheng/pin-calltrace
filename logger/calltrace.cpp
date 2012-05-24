@@ -44,12 +44,13 @@ void trace (TRACE trace, void *v)
 	}
 }
 
-void on_load (THREADID tid, ADDRINT insaddr, ADDRINT addr, ADDRINT size)
+void on_load (THREADID tid, ADDRINT insaddr, ADDRINT addr, ADDRINT size, ADDRINT opcode)
 {
 	struct event_memory event;
 	event.comm.type = ET_MEMLOAD;
 	event.comm.tid = tid;
 	event.insaddr = insaddr;
+	event.opcode = opcode;
 	event.addr = addr;
 	event.size = size;
 	switch (size) {
@@ -61,12 +62,13 @@ void on_load (THREADID tid, ADDRINT insaddr, ADDRINT addr, ADDRINT size)
 	tb_write((event_common *)&event, sizeof(event));
 }
 
-void on_store (THREADID tid, ADDRINT insaddr, ADDRINT addr, ADDRINT size)
+void on_store (THREADID tid, ADDRINT insaddr, ADDRINT addr, ADDRINT size, ADDRINT opcode)
 {
 	struct event_memory event;
 	event.comm.type = ET_MEMSTORE;
 	event.comm.tid = tid;
 	event.insaddr = insaddr;
+	event.opcode = opcode;
 	event.addr = addr;
 	event.size = size;
 	event.value = 0;
@@ -79,18 +81,21 @@ void instruction (INS ins, void *v)
 		INS_InsertPredicatedCall(ins, IPOINT_BEFORE, AFUNPTR(on_load),
 				IARG_THREAD_ID, IARG_INST_PTR,
 				IARG_MEMORYREAD_EA, IARG_MEMORYREAD_SIZE,
+				IARG_ADDRINT, INS_Opcode(ins),
 				IARG_END);
 	}
 	if (INS_HasMemoryRead2(ins)) {
 		INS_InsertPredicatedCall(ins, IPOINT_BEFORE, AFUNPTR(on_load),
 				IARG_THREAD_ID, IARG_INST_PTR,
 				IARG_MEMORYREAD2_EA, IARG_MEMORYREAD_SIZE,
+				IARG_ADDRINT, INS_Opcode(ins),
 				IARG_END);
 	}
 	if (INS_IsMemoryWrite(ins)) { //TODO get value. see SimpleExamples/pinatrace.cpp
 		INS_InsertPredicatedCall(ins, IPOINT_BEFORE, AFUNPTR(on_store),
 				IARG_THREAD_ID, IARG_INST_PTR,
 				IARG_MEMORYWRITE_EA, IARG_MEMORYWRITE_SIZE,
+				IARG_ADDRINT, INS_Opcode(ins),
 				IARG_END);
 	}
 }

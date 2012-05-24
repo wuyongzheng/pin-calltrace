@@ -77,17 +77,17 @@ static void iterate_elf_symbols (Elf *elf, ADDRINT loadoff, std::unordered_set<A
 
 		GElf_Rel rel;
 		for (int i = 0; gelf_getrel(data, i, &rel) == &rel; i ++) {
-			int index = GELF_R_SYM(rel.r_info); /* seems it's never 0. it's also index into .plt code */
+			int index = GELF_R_SYM(rel.r_info); /* seems it's never 0. */
 			GElf_Sym sym;
 			assert(gelf_getsym(dsymdata, index, &sym) == &sym);
 			char *symname = elf_strptr(elf, symstrtab, (size_t)sym.st_name);
-			//printf("emmit %p %s@plt\n", (char *)pltaddr + index * 16 + loadoff, symname);
+			//printf("emmit %p %s@plt\n", (char *)pltaddr + (i+1) * 16 + loadoff, symname);
 			char buffer[256];
 			assert(strlen(symname) + 4 < sizeof(buffer));
 			snprintf(buffer, sizeof(buffer), "%s@plt", symname);
-			if (added.find((ADDRINT)(pltaddr + index * 16)) == added.end()) {
-				proc(priv, buffer, pltaddr + index * 16 + loadoff); // seems both 32 and 64 ELF have 16 plt call stub.
-				added.insert(pltaddr + index * 16);
+			if (added.find((ADDRINT)(pltaddr + (i+1) * 16)) == added.end()) {
+				proc(priv, buffer, pltaddr + (i+1) * 16 + loadoff); // seems both 32 and 64 ELF have 16 plt call stub.
+				added.insert(pltaddr + (i+1) * 16);
 			}
 		}
 	}
@@ -100,6 +100,7 @@ void osdep_iterate_symbols (IMG img, osdep_process_symbol proc, void *priv)
 	std::unordered_set<ADDRINT> added;
 
 	char path[256];
+	assert(IMG_Name(img).length() > 0 && IMG_Name(img)[0] == '/');
 	snprintf(path, sizeof(path), "/usr/lib/debug%s.debug", IMG_Name(img).c_str());
 	int fd = open(path, O_RDONLY);
 	if (fd != -1) {
