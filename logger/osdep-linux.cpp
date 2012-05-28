@@ -4,7 +4,155 @@
 #include <pin.H>
 #include <unordered_set>
 #include <gelf.h>
+#include <libdwarf/dwarf.h>
+#include <libdwarf/libdwarf.h>
 #include "osdep.h"
+
+/* return the offset of DW_OP_fbreg based param
+ * for other form of loc, return -1 */
+static int param_offset (Dwarf_Debug dbg, Dwarf_Die die)
+{
+	Dwarf_Error error;
+	int result, retval;
+
+	Dwarf_Attribute attrloc;
+	result = dwarf_attr(die, DW_AT_location, &attrloc, &error);
+	assert(result != DW_DLV_ERROR);
+	if (result != DW_DLV_OK)
+		return -1;
+
+	Dwarf_Half form;
+	assert(dwarf_whatform(attrloc, &form, &error) == DW_DLV_OK);
+
+	Dwarf_Signed lcnt;
+	Dwarf_Locdesc *llbuf;
+	if (form == DW_FORM_exprloc) {
+		Dwarf_Unsigned exprlen;
+		Dwarf_Ptr blockptr;
+		assert(dwarf_formexprloc(attrloc, &exprlen, &blockptr, &error) == DW_DLV_OK);
+		assert(dwarf_loclist_from_expr(dbg, blockptr, exprlen, &llbuf, &lcnt, &error) == DW_DLV_OK);
+		assert(lcnt == 1);
+	} else {
+		assert(dwarf_loclist(attrloc, &llbuf, &lcnt, &error) == DW_DLV_OK);
+		assert(lcnt == 1);
+	}
+
+	if (llbuf->ld_cents == 1 && llbuf->ld_s[0].lr_atom == DW_OP_fbreg)
+		retval = llbuf->ld_s[0].lr_number;
+	else
+		retval = -1;
+
+	dwarf_dealloc(dbg, llbuf->ld_s, DW_DLA_LOC_BLOCK);
+	dwarf_dealloc(dbg, llbuf, DW_DLA_LOCDESC);
+	dwarf_dealloc(dbg, attrloc, DW_DLA_ATTR);
+
+	return retval;
+}
+
+static void process_subprogram (Dwarf_Debug dbg, Dwarf_Die die, ADDRINT loadoff, std::unordered_set<ADDRINT> &added, osdep_process_symbol proc, void *priv)
+{
+	Dwarf_Error error;
+	int result;
+
+	Dwarf_Addr lowpc = 0, highpc = 0;
+	if (dwarf_lowpc(die, &lowpc, &error) != DW_DLV_OK ||
+			lowpc == 0 ||
+			dwarf_highpc(die, &highpc, &error) != DW_DLV_OK ||
+			highpc == 0)
+		return;
+	if (added.find((ADDRINT)lowpc) != added.end())
+		return;
+	added.insert((ADDRINT)lowpc);
+
+	char *name = NULL;
+	result = dwarf_diename(die, &name, &error);
+	assert(result != DW_DLV_ERROR);
+	if (result == DW_DLV_NO_ENTRY) // we ignore anonymous function
+		return;
+	assert(result == DW_DLV_OK);
+	assert(name != NULL);
+	if (name[0] == '\0') {
+		dwarf_dealloc(dbg, name, DW_DLA_STRING);
+		return;
+	}
+
+	Dwarf_Die child;
+	int max_offset = -1;
+	if (dwarf_child(die, &child, &error) == DW_DLV_OK) {
+		while (1) {
+			Dwarf_Half tag;
+			assert(dwarf_tag(die, &tag, &error) == DW_DLV_OK);
+			if (tag == DW_TAG_formal_parameter) {
+				int offset = param_offset(dbg, child);
+				if (offset > max_offset)
+					max_offset = offset;
+			}
+
+			Dwarf_Die next;
+			int result = dwarf_siblingof(dbg, child, &next, &error);
+			dwarf_dealloc(dbg, child, DW_DLA_DIE);
+			if (result == DW_DLV_NO_ENTRY)
+				break;
+			assert(result == DW_DLV_OK);
+			child = next;
+		}
+	}
+
+	//printf("emmit %s %p+%p=%p\n", name, (void*)lowpc, (void*)loadoff, (void *)((unsigned long)lowpc + (unsigned long)loadoff));
+	proc(priv, name, lowpc + loadoff);
+
+	dwarf_dealloc(dbg, name, DW_DLA_STRING);
+}
+
+static void process_die (Dwarf_Debug dbg, Dwarf_Die die, ADDRINT loadoff, std::unordered_set<ADDRINT> &added, osdep_process_symbol proc, void *priv)
+{
+	Dwarf_Error error;
+
+	Dwarf_Half tag = 0;
+	assert(dwarf_tag(die, &tag, &error) == DW_DLV_OK);
+	if (tag == DW_TAG_subprogram)
+		process_subprogram(dbg, die, loadoff, added, proc, priv);
+
+	Dwarf_Die child;
+	if (dwarf_child(die, &child, &error) == DW_DLV_OK) {
+		while (1) {
+			process_die(dbg, child, loadoff, added, proc, priv);
+
+			Dwarf_Die next;
+			int result = dwarf_siblingof(dbg, child, &next, &error);
+			dwarf_dealloc(dbg, child, DW_DLA_DIE);
+			if (result == DW_DLV_NO_ENTRY)
+				break;
+			assert(result == DW_DLV_OK);
+			child = next;
+		}
+	}
+}
+
+static void iterate_dwarf_symbols (Dwarf_Debug dbg, ADDRINT loadoff, std::unordered_set<ADDRINT> &added, osdep_process_symbol proc, void *priv)
+{
+	while (1) {
+		Dwarf_Error error;
+		Dwarf_Unsigned cu_header_length;
+		Dwarf_Half version_stamp;
+		Dwarf_Unsigned abbrev_offset;
+		Dwarf_Half address_size;
+		Dwarf_Unsigned next_cu_header;
+
+		int result = dwarf_next_cu_header(
+				dbg, &cu_header_length, &version_stamp,
+				&abbrev_offset, &address_size,
+				&next_cu_header, &error);
+		if (result == DW_DLV_NO_ENTRY)
+			break;
+		assert(result == DW_DLV_OK);
+
+		Dwarf_Die cu_die = NULL;
+		assert(dwarf_siblingof(dbg, NULL, &cu_die, &error) == DW_DLV_OK);
+		process_die(dbg, cu_die, loadoff, added, proc, priv);
+		dwarf_dealloc(dbg, cu_die, DW_DLA_DIE);
+	}
+}
 
 static void iterate_elf_symbols (Elf *elf, ADDRINT loadoff, std::unordered_set<ADDRINT> &added, osdep_process_symbol proc, void *priv)
 {
@@ -109,7 +257,12 @@ void osdep_iterate_symbols (IMG img, osdep_process_symbol proc, void *priv)
 		assert(elf_kind(elf) == ELF_K_ELF);
 		GElf_Ehdr ehdr;
 		assert(gelf_getehdr(elf, &ehdr) == &ehdr);
-		iterate_elf_symbols(elf, loadoff + IMG_Entry(img) - ehdr.e_entry, added, proc, priv);
+
+		Dwarf_Debug dbg = 0;
+		Dwarf_Error error;
+		assert(dwarf_elf_init(elf, DW_DLC_READ, NULL, NULL, &dbg, &error) == DW_DLV_OK);
+		iterate_dwarf_symbols(dbg, loadoff + IMG_Entry(img) - ehdr.e_entry, added, proc, priv);
+		assert(dwarf_finish(dbg, &error) == DW_DLV_OK);
 		elf_end(elf);
 		close(fd);
 	}
@@ -117,6 +270,14 @@ void osdep_iterate_symbols (IMG img, osdep_process_symbol proc, void *priv)
 	Elf *elf = elf_memory((char *)IMG_StartAddress(img), IMG_SizeMapped(img));
 	assert(elf != NULL);
 	assert(elf_kind(elf) == ELF_K_ELF);
+	{
+		Dwarf_Debug dbg = 0;
+		Dwarf_Error error;
+		if (dwarf_elf_init(elf, DW_DLC_READ, NULL, NULL, &dbg, &error) == DW_DLV_OK) {
+			iterate_dwarf_symbols(dbg, loadoff, added, proc, priv);
+			assert(dwarf_finish(dbg, &error) == DW_DLV_OK);
+		}
+	}
 	iterate_elf_symbols(elf, loadoff, added, proc, priv);
 	elf_end(elf);
 }
