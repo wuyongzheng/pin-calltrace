@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <assert.h>
+#include <unistd.h>
 #include <pin.H>
 #include <unordered_set>
 #include <gelf.h>

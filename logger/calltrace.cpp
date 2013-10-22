@@ -181,8 +181,8 @@ static void process_symbol (void *priv, char *name, ADDRINT addr)
 	sbevent->struct_size = (int)((char *)sbevent->name - (char *)sbevent) + length + 1;
 	sbevent->addr = addr;
 	memcpy(sbevent->name, name, length);
-	//sbevent->name[length] = '\0';
-	*(sbevent->name + length) = '\0';
+	//sbevent->name[length] = '\0'; // It gives error: array subscript is above array bounds 
+	{ char *arr = sbevent->name; arr[length] = '\0'; }
 	tb_write((event_common *)sbevent, (size_t)sbevent->struct_size);
 	fprintf(logfp, "sym %08x %s\n", addr, name);
 }
