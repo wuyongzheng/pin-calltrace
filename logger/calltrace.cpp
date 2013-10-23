@@ -161,7 +161,7 @@ void fini (INT32 code, void *v)
 	fclose(logfp);
 }
 
-static void process_symbol (void *priv, char *name, ADDRINT addr)
+static void process_symbol (void *priv, const char *name, ADDRINT addr)
 {
 	struct event_symbol *sbevent;
 	char buffer[512];
@@ -193,7 +193,7 @@ void img_load (IMG img, void *v)
 	char buffer[512];
 	size_t length;
 
-/*	fprintf(stderr, "load %s off=%08x low=%08x high=%08x start=%08x size=%08x\n",
+/*	fprintf(logfp, "load %s off=%08x low=%08x high=%08x start=%08x size=%08x\n",
 			IMG_Name(img).c_str(),
 			IMG_LoadOffset(img), IMG_LowAddress(img), IMG_HighAddress(img),
 			IMG_StartAddress(img), IMG_SizeMapped(img));*/

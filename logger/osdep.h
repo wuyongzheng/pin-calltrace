@@ -5,12 +5,18 @@
 
 #if defined(WIN32) || defined(_WIN32)
 
+namespace WINDOWS
+{
 #include <windows.h>
+}
 
 #define PATH_SEPARATOR '\\'
-#define osdep_file HANDLE
-#define osdep_createappend(filename) CreateFile(filename, FILE_APPEND_DATA, FILE_SHARE_READ, NULL, CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL, NULL)
-#define osdep_invalidhandle INVALID_HANDLE_VALUE
+#define osdep_file WINDOWS::HANDLE
+#define osdep_createappend(filename) WINDOWS::CreateFile(filename, FILE_APPEND_DATA, FILE_SHARE_READ, NULL, CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL, NULL)
+#define osdep_invalidhandle ((WINDOWS::HANDLE)-1)
+#define osdep_createfailed(handle) ((handle) == osdep_invalidhandle)
+#define osdep_write(handle,p,s) {WINDOWS::DWORD written=0; WINDOWS::WriteFile((handle), (p), (s), &written, NULL);}
+#define osdep_close(handle) WINDOWS::CloseHandle(handle)
 
 
 #else // ifdef WIN32
@@ -29,7 +35,7 @@
 
 #endif // ifdef WIN32
 
-typedef void (*osdep_process_symbol) (void *priv, char *name, ADDRINT addr);
+typedef void (*osdep_process_symbol) (void *priv, const char *name, ADDRINT addr);
 void osdep_iterate_symbols (IMG img, osdep_process_symbol proc, void *priv);
 
 #endif // OSDEP_H
