@@ -1,7 +1,7 @@
 import java.util.*;
 import java.io.*;
 
-public class CGProcessor implements Processor
+public class CGProcessor extends Processor
 {
 	private static final boolean debug = false;
 	private static final String [] winxp_syscall1 = {
@@ -294,6 +294,4 @@ public class CGProcessor implements Processor
 	{
 		symbols.put(addr, name);
 	}
-
-	public void process_memory (int tid, boolean iswrite, int insaddr, int size, int addr, int value) {}
 }

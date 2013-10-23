@@ -1,7 +1,7 @@
 import java.util.*;
 import java.io.*;
 
-public class MemDep implements Processor
+public class MemDep extends Processor
 {
 	private static final boolean debug = false;
 	private static final boolean ignore_callret = true;

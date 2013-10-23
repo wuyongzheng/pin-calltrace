@@ -1,7 +1,7 @@
 import java.util.*;
 import java.io.*;
 
-public class DirectImageGraph implements Processor
+public class DirectImageGraph extends Processor
 {
 	private Hashtable<String, Integer> edges;
 	private Hashtable<String, String> category;
@@ -102,7 +102,6 @@ public class DirectImageGraph implements Processor
 
 	public void process_imunload (int tid, int addr, int size, String name) {}
 	public void process_symbol (int tid, int addr, String name) {}
-	public void process_memory (int tid, boolean iswrite, int insaddr, int size, int addr, int value) {}
 
 	public void writeDOT (String filename)
 	{
